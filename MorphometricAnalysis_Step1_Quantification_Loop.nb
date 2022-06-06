@@ -1,0 +1,1132 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     49714,       1124]
+NotebookOptionsPosition[     49076,       1107]
+NotebookOutlinePosition[     49469,       1123]
+CellTagsIndexPosition[     49426,       1120]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "RandomFile", "=", 
+    "\"\</path/to/random/image/file/in/raw/data/folder\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SuperDir", "=", 
+   RowBox[{"DirectoryName", "[", "RandomFile", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "SuperDir", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"files", "=", 
+   RowBox[{"FileNames", "[", "\"\<*.tif\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{
+    RowBox[{"Length", "[", "files", "]"}], ",", 
+    "\"\< image files found!\>\""}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"lines", "=", 
+   RowBox[{"DeleteDuplicates", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", 
+      RowBox[{"StringSplit", "[", 
+       RowBox[{"files", ",", "\"\<_\>\""}], "]"}], "]"}], "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<Cell lines found: \>\"", ",", "lines"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"treat", "=", 
+   RowBox[{"DeleteDuplicates", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", 
+      RowBox[{"StringSplit", "[", 
+       RowBox[{"files", ",", "\"\<_\>\""}], "]"}], "]"}], "[", 
+     RowBox[{"[", "3", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Treatments found: \>\"", ",", "treat"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8557085398233967`*^9, 3.855708686960074*^9}, {
+   3.855708732951592*^9, 3.855708764147276*^9}, 3.855789573539577*^9, {
+   3.85579317043182*^9, 3.855793185091796*^9}, {3.8635321729373426`*^9, 
+   3.863532188161915*^9}},
+ Background->RGBColor[
+  0.87, 0.94, 1],ExpressionUUID->"bf540cb4-53c0-4cde-964e-3c57e163e01a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Select", " ", "data", " ", "for", " ", "analysis"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"selLine", "=", "\"\<U2OS\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"selTreat", "=", "\"\<Cis10\>\""}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"BaseID", "=", 
+    RowBox[{"StringJoin", "[", 
+     RowBox[{"selLine", ",", "\"\<_\>\"", ",", "selTreat"}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"filter1", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{"files", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"StringSplit", "[", 
+           RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "selLine"}], "&"}]}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"filter2", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{"filter1", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"StringSplit", "[", 
+           RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "selTreat"}], "&"}]}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Number of selected files: \>\"", ",", 
+     RowBox[{"Length", "[", "filter2", "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.855793205099297*^9, 3.8557933277169657`*^9}, {
+   3.855797061370708*^9, 3.855797064873928*^9}, {3.8558506768017178`*^9, 
+   3.8558506775361357`*^9}, 3.8558523370343246`*^9, {3.855855128035454*^9, 
+   3.855855129464581*^9}, {3.8558626739155617`*^9, 3.855862675651993*^9}},
+ Background->RGBColor[1, 1, 0.85],
+ CellLabel->"In[34]:=",ExpressionUUID->"e633a941-17d9-4990-92b6-c88db82c8867"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"AllNpmVal", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AllFblVal", "=", 
+    RowBox[{"{", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CompleteNpmQC", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CompleteFblQC", "=", 
+    RowBox[{"{", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Monitor", "[", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"count", "=", "f"}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"selFile", "=", 
+          RowBox[{"filter2", "[", 
+           RowBox[{"[", "count", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"id", "=", 
+          RowBox[{"StringJoin", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"StringSplit", "[", 
+              RowBox[{"selFile", ",", "\"\<_\>\""}], "]"}], "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ",", "\"\<_\>\"", ",", 
+            RowBox[{
+             RowBox[{"StringSplit", "[", 
+              RowBox[{"selFile", ",", "\"\<_\>\""}], "]"}], "[", 
+             RowBox[{"[", "3", "]"}], "]"}], ",", "\"\<_Img\>\"", ",", 
+            RowBox[{"First", "[", 
+             RowBox[{"StringSplit", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"StringSplit", "[", 
+                 RowBox[{"selFile", ",", "\"\<_\>\""}], "]"}], "[", 
+                RowBox[{"[", "6", "]"}], "]"}], ",", "\"\<.\>\""}], "]"}], 
+             "]"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"rein", "=", 
+          RowBox[{"Import", "[", "selFile", "]"}]}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"Find", " ", "nuclei"}], " ", "*)"}], "\[IndentingNewLine]",
+          "\[IndentingNewLine]", 
+         RowBox[{"nuc1", "=", 
+          RowBox[{"ImageAdjust", "[", 
+           RowBox[{"GaussianFilter", "[", 
+            RowBox[{
+             RowBox[{"rein", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], ",", "20"}], "]"}], "]"}]}], 
+         ";", "\[IndentingNewLine]", 
+         RowBox[{"nuc2", "=", 
+          RowBox[{"Binarize", "[", 
+           RowBox[{"nuc1", ",", 
+            RowBox[{"StandardDeviation", "[", 
+             RowBox[{"Flatten", "[", 
+              RowBox[{"ImageData", "[", "nuc1", "]"}], "]"}], "]"}]}], 
+           "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"nuc3", "=", 
+          RowBox[{"MorphologicalTransform", "[", 
+           RowBox[{"nuc2", ",", "Max", ",", "1"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"m4", "=", 
+          RowBox[{"FillingTransform", "[", "nuc3", "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"m5", "=", 
+          RowBox[{"SelectComponents", "[", 
+           RowBox[{"m4", ",", "\"\<Area\>\"", ",", 
+            RowBox[{
+             RowBox[{"#", ">", "5000"}], "&"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"m6", "=", 
+          RowBox[{"DistanceTransform", "[", "m5", "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"m7", "=", 
+          RowBox[{"MaxDetect", "[", 
+           RowBox[{"m6", ",", "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"m8", "=", 
+          RowBox[{
+           RowBox[{"ImageData", "[", 
+            RowBox[{"m5", ",", "\"\<Bit\>\""}], "]"}], "*", 
+           RowBox[{"WatershedComponents", "[", 
+            RowBox[{
+             RowBox[{"ColorNegate", "@", "m6"}], ",", "m7"}], "]"}]}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"m9", "=", 
+          RowBox[{"Image", "[", 
+           RowBox[{"m8", ",", "\"\<Binary\>\""}], "]"}]}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"nuc4", "=", 
+          RowBox[{"DeleteBorderComponents", "[", "m9", "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"nuc5", "=", 
+          RowBox[{"SelectComponents", "[", 
+           RowBox[{"nuc4", ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"#Area", ">", "5000"}], "&&", 
+              RowBox[{"#Circularity", ">", "0.8"}]}], "&"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"highlight1", "=", 
+          RowBox[{"HighlightImage", "[", 
+           RowBox[{
+            RowBox[{"rein", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ",", "nuc5"}], "]"}]}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"meas1", "=", 
+          RowBox[{
+           RowBox[{"ComponentMeasurements", "[", 
+            RowBox[{"nuc5", ",", "\"\<BoundingBox\>\""}], "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", "2"}], "]"}], " ", "]"}]}], 
+         RowBox[{"(*", " ", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              SubscriptBox[
+               StyleBox["x", "TI"], 
+               StyleBox["min", "TI"]], ",", 
+              SubscriptBox[
+               StyleBox["y", "TI"], 
+               StyleBox["min", "TI"]]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              SubscriptBox[
+               StyleBox["x", "TI"], 
+               StyleBox["max", "TI"]], ",", 
+              SubscriptBox[
+               StyleBox["y", "TI"], 
+               StyleBox["max", "TI"]]}], "}"}]}], "}"}], " ", "*)"}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         
+         RowBox[{"(*", 
+          RowBox[{"**", " ", "Analyze"}], "  ", "***)"}], 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"GasConst", "=", "8.31446261815324"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Temp", "=", "310.15"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"kcal", "=", 
+          RowBox[{"2.390", "\[Times]", 
+           RowBox[{"10", "^", 
+            RowBox[{"\[Minus]", "4"}]}]}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Addition", "=", "10"}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"npm", "=", 
+          RowBox[{"rein", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"fbl", "=", 
+          RowBox[{"rein", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"npmVal", "=", 
+          RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"fblVal", "=", 
+          RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"AllQC1", "=", 
+          RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"AllNpmQC", "=", 
+          RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"AllFblQC", "=", 
+          RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Monitor", "[", 
+          RowBox[{
+           RowBox[{"Do", "[", 
+            RowBox[{
+             RowBox[{"{", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"POI", "=", "a"}], ";", "\[IndentingNewLine]", 
+                RowBox[{"xMin", "=", 
+                 RowBox[{
+                  RowBox[{"meas1", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"POI", ",", "1", ",", "1"}], "]"}], "]"}], "-", 
+                  "Addition"}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{"xMax", "=", 
+                 RowBox[{
+                  RowBox[{"meas1", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"POI", ",", "2", ",", "1"}], "]"}], "]"}], "+", 
+                  "Addition"}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{"yMin", "=", 
+                 RowBox[{
+                  RowBox[{"Last", "[", 
+                   RowBox[{"ImageDimensions", "[", "nuc5", "]"}], "]"}], "-", 
+                  
+                  RowBox[{"meas1", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"POI", ",", "1", ",", "2"}], "]"}], "]"}], "+", 
+                  "Addition"}]}], " ", ";", "\[IndentingNewLine]", 
+                RowBox[{"yMax", "=", 
+                 RowBox[{
+                  RowBox[{"Last", "[", 
+                   RowBox[{"ImageDimensions", "[", "nuc5", "]"}], "]"}], "-", 
+                  
+                  RowBox[{"meas1", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"POI", ",", "2", ",", "2"}], "]"}], "]"}], "-", 
+                  "Addition"}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{"maskCut", "=", 
+                 RowBox[{"ImageTake", "[", 
+                  RowBox[{"nuc5", ",", "\[IndentingNewLine]", 
+                   RowBox[{"{", 
+                    RowBox[{"yMax", ",", "yMin"}], "}"}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", "xMax"}], "}"}]}], "]"}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"npmCut", "=", 
+                 RowBox[{"ImageTake", "[", 
+                  RowBox[{"npm", ",", "\[IndentingNewLine]", 
+                   RowBox[{"{", 
+                    RowBox[{"yMax", ",", "yMin"}], "}"}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", "xMax"}], "}"}]}], "]"}]}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"fblCut", "=", 
+                 RowBox[{"ImageTake", "[", 
+                  RowBox[{"fbl", ",", "\[IndentingNewLine]", 
+                   RowBox[{"{", 
+                    RowBox[{"yMax", ",", "yMin"}], "}"}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"{", 
+                    RowBox[{"xMin", ",", "xMax"}], "}"}]}], "]"}]}], ";", 
+                "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                RowBox[{"qc1", "=", 
+                 RowBox[{"TableForm", "[", 
+                  RowBox[{"{", "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"maskCut", ",", "npmCut", ",", "fblCut"}], "}"}], 
+                    ",", "\[IndentingNewLine]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"HighlightImage", "[", 
+                    RowBox[{"maskCut", ",", "maskCut"}], "]"}], ",", 
+                    RowBox[{"HighlightImage", "[", 
+                    RowBox[{"npmCut", ",", "maskCut"}], "]"}], ",", 
+                    RowBox[{"HighlightImage", "[", 
+                    RowBox[{"fblCut", ",", "maskCut"}], "]"}]}], "}"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"ImageDimensions", "[", "maskCut", "]"}], "}"}], 
+                    ",", 
+                    RowBox[{"{", 
+                    RowBox[{"ImageDimensions", "[", "npmCut", "]"}], "}"}], 
+                    ",", 
+                    RowBox[{"{", 
+                    RowBox[{"ImageDimensions", "[", "fblCut", "]"}], "}"}]}], 
+                    "}"}]}], "\[IndentingNewLine]", "}"}], "]"}]}]}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"AllQC1", "=", 
+                RowBox[{"AppendTo", "[", 
+                 RowBox[{"AllQC1", ",", "qc1"}], "]"}]}], ",", 
+               "\[IndentingNewLine]", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"nucleus", "=", 
+                 RowBox[{"DeleteBorderComponents", "[", "maskCut", "]"}]}], 
+                ";", 
+                RowBox[{"(*", " ", "nucleus", " ", "*)"}], 
+                "\[IndentingNewLine]", 
+                RowBox[{"bck", "=", 
+                 RowBox[{"ColorNegate", "[", 
+                  RowBox[{"MorphologicalTransform", "[", 
+                   RowBox[{"maskCut", ",", "Max", ",", "3"}], "]"}], "]"}]}], 
+                ";", " ", 
+                RowBox[{"(*", " ", "background", " ", "*)"}], 
+                "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                RowBox[{"If", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"First", "[", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{"nucleus", ",", "\"\<Area\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}], ">", 
+                   "5000"}], ",", 
+                  RowBox[{"{", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                   RowBox[{"(*", 
+                    RowBox[{
+                    "*", " ", "Measure", " ", "NPM1", " ", "signals"}], " ", 
+                    "**)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                   RowBox[{"(*", " ", 
+                    RowBox[{"Make", " ", "masks"}], " ", "*)"}], 
+                   "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"nucli1", "=", "npmCut"}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"nucli2", "=", 
+                    RowBox[{"ImageAdjust", "[", 
+                    RowBox[{"GaussianFilter", "[", 
+                    RowBox[{"nucli1", ",", "5"}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"nucli3", "=", 
+                    RowBox[{"FillingTransform", "[", 
+                    RowBox[{"Binarize", "[", 
+                    RowBox[{"nucli2", ",", 
+                    RowBox[{
+                    RowBox[{"StandardDeviation", "[", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"ImageData", "[", "nucli2", "]"}], "]"}], "]"}], 
+                    "*", "3.5"}]}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"nucleolus", "=", 
+                    RowBox[{"DeleteBorderComponents", "[", 
+                    RowBox[{"SelectComponents", "[", 
+                    RowBox[{"nucli3", ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#Area", ">", "10"}], "&&", 
+                    RowBox[{"#Circularity", ">", "0.75"}]}], "&"}]}], "]"}], 
+                    "]"}]}], ";", " ", 
+                    RowBox[{"(*", " ", "nucleoli", " ", "*)"}], 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"nucpl", "=", 
+                    RowBox[{"ImageSubtract", "[", 
+                    RowBox[{"nucleus", ",", 
+                    RowBox[{"MorphologicalTransform", "[", 
+                    RowBox[{"nucleolus", ",", "Max", ",", "1"}], "]"}]}], 
+                    "]"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"nucleoplasm", "=", 
+                    RowBox[{"SelectComponents", "[", 
+                    RowBox[{"nucpl", ",", "\"\<Area\>\"", ",", 
+                    RowBox[{
+                    RowBox[{"#", ">", "1000"}], "&"}]}], "]"}]}], ";", " ", 
+                    RowBox[{"(*", " ", "nucleoplasm", " ", "*)"}], 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"NpmQC", "=", 
+                    RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"MorphologicalComponents", "[", "nucleus", "]"}], 
+                    "//", "Colorize"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleoplasm", "]"}], "//",
+                     "Colorize"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleolus", "]"}], "//", 
+                    "Colorize"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"MorphologicalComponents", "[", "bck", "]"}], "//",
+                     "Colorize"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"AllNpmQC", "=", 
+                    RowBox[{"AppendTo", "[", 
+                    RowBox[{"AllNpmQC", ",", "NpmQC"}], "]"}]}]}], ",", 
+                    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                    RowBox[{"(*", " ", 
+                    RowBox[{"Measure", " ", "NPM1", " ", "signals"}], " ", 
+                    "*)"}], "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"npmBCK", "=", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"MorphologicalComponents", "[", "bck", "]"}], ",",
+                     "npmCut"}], "}"}], ",", "\"\<Mean\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"npmTOT", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"MorphologicalComponents", "[", "nucleus", "]"}], 
+                    ",", "npmCut"}], "}"}], ",", "\"\<Total\>\""}], "]"}], 
+                    "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "-", 
+                    RowBox[{"First", "[", "npmBCK", "]"}]}], ")"}], "/", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"MorphologicalComponents", "[", "nucleus", "]"}], 
+                    ",", "npmCut"}], "}"}], ",", "\"\<Area\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"npmArea", "=", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleolus", "]"}], ",", 
+                    "npmCut"}], "}"}], ",", "\"\<Area\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"npmEccen", "=", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleolus", "]"}], ",", 
+                    "npmCut"}], "}"}], ",", "\"\<Eccentricity\>\""}], "]"}], 
+                    "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"npmDENSE", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleolus", "]"}], ",", 
+                    "npmCut"}], "}"}], ",", "\"\<Total\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "-", 
+                    RowBox[{"First", "[", "npmBCK", "]"}]}], ")"}], "/", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleolus", "]"}], ",", 
+                    "npmCut"}], "}"}], ",", "\"\<Area\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"npmDIL", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleoplasm", "]"}], ",",
+                     "npmCut"}], "}"}], ",", "\"\<Total\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "-", 
+                    RowBox[{"First", "[", "npmBCK", "]"}]}], ")"}], "/", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleoplasm", "]"}], ",",
+                     "npmCut"}], "}"}], ",", "\"\<Area\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"npmDG", "=", 
+                    RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"Do", "[", 
+                    RowBox[{
+                    RowBox[{"npmDG", "=", 
+                    RowBox[{"AppendTo", "[", 
+                    RowBox[{"npmDG", ",", 
+                    RowBox[{
+                    RowBox[{"-", "GasConst"}], "*", "Temp", "*", 
+                    RowBox[{"Log", "[", 
+                    RowBox[{
+                    RowBox[{"npmDENSE", "[", 
+                    RowBox[{"[", "dg", "]"}], "]"}], "/", "npmDIL"}], 
+                    "]"}]}]}], "]"}]}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"dg", ",", "1", ",", 
+                    RowBox[{"Length", "[", "npmDENSE", "]"}]}], "}"}]}], 
+                    "]"}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"npmDG", "=", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"npmDG", "*", "kcal"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"npmVal", "=", 
+                    RowBox[{"AppendTo", "[", 
+                    RowBox[{"npmVal", ",", 
+                    RowBox[{"Transpose", "[", 
+                    RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"npmTOT", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"x", ",", "1", ",", 
+                    RowBox[{"Length", "[", "npmDG", "]"}]}], "}"}]}], "]"}], 
+                    "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"npmDIL", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"x", ",", "1", ",", 
+                    RowBox[{"Length", "[", "npmDG", "]"}]}], "}"}]}], "]"}], 
+                    "]"}], ",", "\[IndentingNewLine]", "npmDENSE", ",", 
+                    "\[IndentingNewLine]", "npmDG", ",", 
+                    "\[IndentingNewLine]", "npmArea", ",", 
+                    "\[IndentingNewLine]", "npmEccen"}], "}"}], "]"}]}], 
+                    "]"}]}], ";", "\[IndentingNewLine]", 
+                    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                    RowBox[{"(*", 
+                    RowBox[{"*", " ", "Measure", " ", "FBL", " ", "signals"}],
+                     " ", "**)"}], "\[IndentingNewLine]", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"(*", " ", 
+                    RowBox[{"Make", " ", "masks"}], " ", "*)"}], 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"nucli1", "=", "fblCut"}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"nucli2", "=", 
+                    RowBox[{"ImageAdjust", "[", 
+                    RowBox[{"GaussianFilter", "[", 
+                    RowBox[{"nucli1", ",", "5"}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"nucli3", "=", 
+                    RowBox[{"FillingTransform", "[", 
+                    RowBox[{"Binarize", "[", 
+                    RowBox[{"nucli2", ",", 
+                    RowBox[{
+                    RowBox[{"StandardDeviation", "[", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"ImageData", "[", "nucli2", "]"}], "]"}], "]"}], 
+                    "*", "3.5"}]}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"nucleolus", "=", 
+                    RowBox[{"DeleteBorderComponents", "[", 
+                    RowBox[{"SelectComponents", "[", 
+                    RowBox[{"nucli3", ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#Area", ">", "10"}], "&&", 
+                    RowBox[{"#Circularity", ">", "0.75"}]}], "&"}]}], "]"}], 
+                    "]"}]}], ";", " ", 
+                    RowBox[{"(*", " ", "nucleoli", " ", "*)"}], 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"nucpl", "=", 
+                    RowBox[{"ImageSubtract", "[", 
+                    RowBox[{"nucleus", ",", 
+                    RowBox[{"MorphologicalTransform", "[", 
+                    RowBox[{"nucleolus", ",", "Max", ",", "1"}], "]"}]}], 
+                    "]"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"nucleoplasm", "=", 
+                    RowBox[{"SelectComponents", "[", 
+                    RowBox[{"nucpl", ",", "\"\<Area\>\"", ",", 
+                    RowBox[{
+                    RowBox[{"#", ">", "1000"}], "&"}]}], "]"}]}], ";", " ", 
+                    RowBox[{"(*", " ", "nucleoplasm", " ", "*)"}], 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"FblQC", "=", 
+                    RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"MorphologicalComponents", "[", "nucleus", "]"}], 
+                    "//", "Colorize"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleoplasm", "]"}], "//",
+                     "Colorize"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleolus", "]"}], "//", 
+                    "Colorize"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"MorphologicalComponents", "[", "bck", "]"}], "//",
+                     "Colorize"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"AllFblQC", "=", 
+                    RowBox[{"AppendTo", "[", 
+                    RowBox[{"AllFblQC", ",", "FblQC"}], "]"}]}]}], ",", 
+                    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                    RowBox[{"(*", " ", 
+                    RowBox[{"Measure", " ", "FBL", " ", "signals"}], " ", 
+                    "*)"}], "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"fblBCK", "=", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"MorphologicalComponents", "[", "bck", "]"}], ",",
+                     "fblCut"}], "}"}], ",", "\"\<Mean\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"fblTOT", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"MorphologicalComponents", "[", "nucleus", "]"}], 
+                    ",", "fblCut"}], "}"}], ",", "\"\<Total\>\""}], "]"}], 
+                    "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "-", 
+                    RowBox[{"First", "[", "fblBCK", "]"}]}], ")"}], "/", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"MorphologicalComponents", "[", "nucleus", "]"}], 
+                    ",", "fblCut"}], "}"}], ",", "\"\<Area\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"fblArea", "=", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleolus", "]"}], ",", 
+                    "fblCut"}], "}"}], ",", "\"\<Area\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"fblEccen", "=", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleolus", "]"}], ",", 
+                    "fblCut"}], "}"}], ",", "\"\<Eccentricity\>\""}], "]"}], 
+                    "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"fblDENSE", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleolus", "]"}], ",", 
+                    "fblCut"}], "}"}], ",", "\"\<Total\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "-", 
+                    RowBox[{"First", "[", "fblBCK", "]"}]}], ")"}], "/", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleolus", "]"}], ",", 
+                    "fblCut"}], "}"}], ",", "\"\<Area\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"fblDIL", "=", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleoplasm", "]"}], ",",
+                     "fblCut"}], "}"}], ",", "\"\<Total\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}], "-", 
+                    RowBox[{"First", "[", "fblBCK", "]"}]}], ")"}], "/", 
+                    RowBox[{
+                    RowBox[{"ComponentMeasurements", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "MorphologicalComponents", "[", "nucleoplasm", "]"}], ",",
+                     "fblCut"}], "}"}], ",", "\"\<Area\>\""}], "]"}], "[", 
+                    RowBox[{"[", 
+                    RowBox[{"All", ",", "2"}], "]"}], "]"}]}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"fblDG", "=", 
+                    RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"Do", "[", 
+                    RowBox[{
+                    RowBox[{"fblDG", "=", 
+                    RowBox[{"AppendTo", "[", 
+                    RowBox[{"fblDG", ",", 
+                    RowBox[{
+                    RowBox[{"-", "GasConst"}], "*", "Temp", "*", 
+                    RowBox[{"Log", "[", 
+                    RowBox[{
+                    RowBox[{"fblDENSE", "[", 
+                    RowBox[{"[", "dg", "]"}], "]"}], "/", "fblDIL"}], 
+                    "]"}]}]}], "]"}]}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"dg", ",", "1", ",", 
+                    RowBox[{"Length", "[", "fblDENSE", "]"}]}], "}"}]}], 
+                    "]"}], ";", "\[IndentingNewLine]", 
+                    RowBox[{"fblDG", "=", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"fblDG", "*", "kcal"}], "]"}]}], ";", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"fblVal", "=", 
+                    RowBox[{"AppendTo", "[", 
+                    RowBox[{"fblVal", ",", 
+                    RowBox[{"Transpose", "[", 
+                    RowBox[{"{", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"fblTOT", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"x", ",", "1", ",", 
+                    RowBox[{"Length", "[", "fblDG", "]"}]}], "}"}]}], "]"}], 
+                    "]"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{"Flatten", "[", 
+                    RowBox[{"Table", "[", 
+                    RowBox[{"fblDIL", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"x", ",", "1", ",", 
+                    RowBox[{"Length", "[", "fblDG", "]"}]}], "}"}]}], "]"}], 
+                    "]"}], ",", "\[IndentingNewLine]", "fblDENSE", ",", 
+                    "\[IndentingNewLine]", "fblDG", ",", 
+                    "\[IndentingNewLine]", "fblArea", ",", 
+                    "\[IndentingNewLine]", "fblEccen"}], "}"}], "]"}]}], 
+                    "]"}]}], ";"}]}], "\[IndentingNewLine]", 
+                   "\[IndentingNewLine]", "}"}], ",", 
+                  RowBox[{"Print", "[", "\"\<Skipped\>\"", "]"}]}], "]"}]}]}],
+               "\[IndentingNewLine]", "\[IndentingNewLine]", "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"a", ",", "1", ",", 
+               RowBox[{"Length", "[", "meas1", "]"}]}], "}"}]}], "]"}], ",", 
+           RowBox[{"ProgressIndicator", "[", 
+            RowBox[{"a", ",", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", 
+               RowBox[{"Length", "[", "meas1", "]"}]}], "}"}]}], "]"}]}], 
+          "]"}]}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"AllNpmVal", "=", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"AllNpmVal", ",", 
+            RowBox[{"Flatten", "[", 
+             RowBox[{"npmVal", ",", "1"}], "]"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"AllFblVal", "=", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"AllFblVal", ",", 
+            RowBox[{"Flatten", "[", 
+             RowBox[{"fblVal", ",", "1"}], "]"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
+         RowBox[{"CompleteNpmQC", "=", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"CompleteNpmQC", ",", 
+            RowBox[{"Flatten", "[", 
+             RowBox[{"AllNpmQC", ",", "1"}], "]"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"CompleteFblQC", "=", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"CompleteFblQC", ",", 
+            RowBox[{"Flatten", "[", 
+             RowBox[{"AllFblQC", ",", "1"}], "]"}]}], "]"}]}], ";"}]}], 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"f", ",", "1", ",", 
+        RowBox[{"Length", "[", "filter2", "]"}]}], "}"}]}], "]"}], ",", 
+    RowBox[{"ProgressIndicator", "[", 
+     RowBox[{"f", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", 
+        RowBox[{"Length", "[", "filter2", "]"}]}], "}"}]}], "]"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CompleteNpmQC", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"CompleteNpmQC", ",", "1"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AllNpmVal", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"AllNpmVal", ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AllNpmVal", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{"AllNpmVal", ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NumberQ", "[", 
+         RowBox[{"Total", "[", "#", "]"}], "]"}], "\[Equal]", "True"}], 
+       "&"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CompleteFblQC", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"CompleteFblQC", ",", "1"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AllFblVal", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"AllFblVal", ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AllFblVal", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{"AllFblVal", ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"NumberQ", "[", 
+         RowBox[{"Total", "[", "#", "]"}], "]"}], "\[Equal]", "True"}], 
+       "&"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"summaryBox", "=", 
+  RowBox[{"BoxWhiskerChart", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Transpose", "[", "AllNpmVal", "]"}], "[", 
+       RowBox[{"[", "4", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"Transpose", "[", "AllFblVal", "]"}], "[", 
+       RowBox[{"[", "4", "]"}], "]"}]}], "}"}], ",", "\"\<Outliers\>\"", ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"PlotLabel", "\[Rule]", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"\"\<Sample ID: \>\"", ",", "BaseID"}], "]"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"ChartLabels", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\"\<NPM1\>\"", ",", "\"\<FBL\>\""}], "}"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+    RowBox[{"FrameLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+      "None", ",", 
+       "\"\<\!\(\*SubscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) (kcal \
+\!\(\*SuperscriptBox[\(mol\), \(-1\)]\))\>\""}], "}"}]}]}], "]"}]}]}], "Input",\
+
+ CellChangeTimes->{{3.855789976011397*^9, 3.855790153548233*^9}, {
+   3.855790184977495*^9, 3.855790223738817*^9}, {3.855790300323053*^9, 
+   3.855790304034795*^9}, {3.855790373033126*^9, 3.855790416563925*^9}, {
+   3.855790490304955*^9, 3.855790495681396*^9}, {3.8557915339269648`*^9, 
+   3.855791559609653*^9}, {3.85579181545216*^9, 3.85579183638943*^9}, {
+   3.855793349917921*^9, 3.855793356960981*^9}, {3.855793426486938*^9, 
+   3.855793498864484*^9}, {3.855793578334814*^9, 3.85579367963482*^9}, {
+   3.855793716168117*^9, 3.855793734004388*^9}, {3.855795161806848*^9, 
+   3.855795177166922*^9}, {3.855795298661429*^9, 3.8557953574147263`*^9}, {
+   3.855795527861167*^9, 3.8557955931818237`*^9}, 3.855796967850004*^9, {
+   3.855797079180551*^9, 3.855797080106893*^9}, {3.8557972907088337`*^9, 
+   3.855797364895235*^9}, {3.85584809190594*^9, 3.855848150204645*^9}, {
+   3.8558483768621273`*^9, 3.8558484067597933`*^9}, {3.8558485536013927`*^9, 
+   3.855848560836136*^9}, {3.855848661082584*^9, 3.8558487032446938`*^9}},
+ Background->RGBColor[1, 0.9, 0.8],
+ CellLabel->"In[40]:=",ExpressionUUID->"ba3e2041-1f4e-42f6-a3db-0af6796ea98a"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{"StringJoin", "[", 
+     RowBox[{"BaseID", ",", "\"\<_SummaryPlot.pdf\>\""}], "]"}], ",", 
+    "summaryBox"}], "]"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"BaseID", ",", "\"\<_NPM1_Measurements.csv\>\""}], "]"}], ",", 
+   RowBox[{"TableForm", "[", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<TOTAL\>\"", ",", "\"\<DILUTE\>\"", ",", "\"\<DENSE\>\"", ",", 
+           "\"\<dG\>\"", ",", "\"\<AREA\>\"", ",", "\"\<ECCENTRICITY\>\""}], 
+          "}"}], "}"}], ",", "AllNpmVal"}], "}"}], ",", "1"}], "]"}], "]"}]}],
+   "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{"StringJoin", "[", 
+     RowBox[{"BaseID", ",", "\"\<_FBL_Measurements.csv\>\""}], "]"}], ",", 
+    RowBox[{"TableForm", "[", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<TOTAL\>\"", ",", "\"\<DILUTE\>\"", ",", "\"\<DENSE\>\"", ",", 
+            "\"\<dG\>\"", ",", "\"\<AREA\>\"", ",", "\"\<ECCENTRICITY\>\""}], 
+           "}"}], "}"}], ",", "AllFblVal"}], "}"}], ",", "1"}], "]"}], 
+     "]"}]}], "]"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"BaseID", ",", "\"\<_NPM1_QC.nb\>\""}], "]"}], ",", 
+   RowBox[{"TableForm", "[", 
+    RowBox[{"Partition", "[", 
+     RowBox[{
+      RowBox[{"Flatten", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<Nucleus\>\"", ",", "\"\<Nucleoplasm\>\"", ",", 
+            "\"\<Nucleoli\>\"", ",", "\"\<Bck\>\""}], "}"}], ",", 
+          "CompleteNpmQC"}], "}"}], ",", "1"}], "]"}], ",", "4"}], "]"}], 
+    "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"BaseID", ",", "\"\<_FBL_QC.nb\>\""}], "]"}], ",", 
+   RowBox[{"TableForm", "[", 
+    RowBox[{"Partition", "[", 
+     RowBox[{
+      RowBox[{"Flatten", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<Nucleus\>\"", ",", "\"\<Nucleoplasm\>\"", ",", 
+            "\"\<Nucleoli\>\"", ",", "\"\<Bck\>\""}], "}"}], ",", 
+          "CompleteFblQC"}], "}"}], ",", "1"}], "]"}], ",", "4"}], "]"}], 
+    "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8557970056346807`*^9, 3.8557970485893517`*^9}, {
+  3.855797089705563*^9, 3.855797116420562*^9}, {3.855797194484934*^9, 
+  3.8557972249238377`*^9}, {3.855797407927174*^9, 3.855797475227747*^9}, {
+  3.8557988255786333`*^9, 3.855798856182189*^9}, {3.855799018182562*^9, 
+  3.855799031728586*^9}, {3.855799065423422*^9, 3.85579910740867*^9}, {
+  3.855799239403328*^9, 3.855799241616536*^9}, {3.855848591011313*^9, 
+  3.855848656131031*^9}, {3.855850456847443*^9, 3.8558504955259438`*^9}, {
+  3.855850528212851*^9, 3.855850532116238*^9}, {3.855850649165532*^9, 
+  3.855850652358201*^9}},
+ Background->RGBColor[1, 0.85, 0.85],
+ CellLabel->"In[28]:=",ExpressionUUID->"c17664c0-bbb4-4c9a-ab50-277e3757dd04"]
+},
+WindowSize->{1386, 852},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"5dcb99e2-872d-4878-a368-8b47e9d2593d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1920, 51, 294, "Input",ExpressionUUID->"bf540cb4-53c0-4cde-964e-3c57e163e01a"],
+Cell[2481, 73, 1871, 45, 232, "Input",ExpressionUUID->"e633a941-17d9-4990-92b6-c88db82c8867"],
+Cell[4355, 120, 41222, 895, 3784, "Input",ExpressionUUID->"ba3e2041-1f4e-42f6-a3db-0af6796ea98a"],
+Cell[45580, 1017, 3492, 88, 211, "Input",ExpressionUUID->"c17664c0-bbb4-4c9a-ab50-277e3757dd04"]
+}
+]
+*)
+

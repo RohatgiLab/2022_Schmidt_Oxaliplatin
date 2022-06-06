@@ -1,0 +1,818 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     31631,        810]
+NotebookOptionsPosition[     30782,        791]
+NotebookOutlinePosition[     31189,        807]
+CellTagsIndexPosition[     31146,        804]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "exprFile", "=", 
+    "\"\</path/to/transcript/expression/file/from/step2\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "icFile", "=", 
+    "\"\<path/to/oxaliplatin (BRDBRD-K78960041-001-05-7) Drug sensitivity AUC \
+(PRISM Repurposing Secondary Screen) 19Q4.csv\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"exprData", "=", 
+   RowBox[{"Drop", "[", 
+    RowBox[{
+     RowBox[{"Import", "[", "exprFile", "]"}], ",", "2"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"exprNum", "=", 
+    RowBox[{"Transpose", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Transpose", "[", "exprData", "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "exprData", "]"}], "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], "}"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"icData", "=", 
+   RowBox[{"Drop", "[", 
+    RowBox[{
+     RowBox[{"Import", "[", "icFile", "]"}], ",", "1"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"icNum", "=", 
+    RowBox[{"Transpose", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Transpose", "[", "icData", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "icData", "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", "\"\<Data loaded!\>\"", "]"}]}], "Input",
+ CellChangeTimes->{{3.850317616092873*^9, 3.850317616203376*^9}, {
+   3.8503191804047747`*^9, 3.850319183377295*^9}, {3.850324400552351*^9, 
+   3.850324637021408*^9}, 3.850325511054503*^9, {3.850325616086092*^9, 
+   3.8503256205982857`*^9}, {3.8503263857405243`*^9, 3.850326386369029*^9}, {
+   3.850326539510539*^9, 3.8503265410087023`*^9}, {3.85032826275956*^9, 
+   3.850328263394579*^9}, {3.850328465012899*^9, 3.8503284653804617`*^9}, {
+   3.850485273917972*^9, 3.850485284291501*^9}, {3.850485461875945*^9, 
+   3.850485488313065*^9}, {3.85048990527252*^9, 3.850489906307419*^9}, {
+   3.8504955306306353`*^9, 3.850495531060637*^9}, 3.858167966505143*^9, {
+   3.858168484468074*^9, 3.858168507576045*^9}, {3.858168578658025*^9, 
+   3.858168581018901*^9}, {3.8581693951686707`*^9, 3.858169395790698*^9}, {
+   3.858169461899584*^9, 3.858169462637336*^9}, {3.8581766352826557`*^9, 
+   3.858176635672041*^9}, {3.858176822759327*^9, 3.858176823367407*^9}, {
+   3.85817688027076*^9, 3.858176884393775*^9}, {3.858176995117488*^9, 
+   3.858176996585936*^9}, {3.8581770503890944`*^9, 3.858177052554903*^9}, {
+   3.858177087287546*^9, 3.858177088416196*^9}, {3.858177174065843*^9, 
+   3.858177177135972*^9}, {3.858177224285185*^9, 3.858177224671011*^9}, {
+   3.858177256537904*^9, 3.858177257766097*^9}, 3.861371758887826*^9, {
+   3.861376183685356*^9, 3.86137618508672*^9}, {3.861376497628406*^9, 
+   3.861376498888274*^9}, {3.861376790429576*^9, 3.86137679080821*^9}, {
+   3.861377174023561*^9, 3.861377175778905*^9}, {3.861377438829205*^9, 
+   3.861377440539673*^9}, {3.8613784026864653`*^9, 3.861378404268317*^9}, {
+   3.86137843800593*^9, 3.861378469686037*^9}, {3.861378508299315*^9, 
+   3.861378539143341*^9}, {3.861464265001334*^9, 3.861464265366494*^9}, {
+   3.861492013437213*^9, 3.861492015270472*^9}, {3.861492052136772*^9, 
+   3.861492052718048*^9}, {3.8614920868527517`*^9, 3.861492116557716*^9}, {
+   3.86149214698041*^9, 3.8614921811046*^9}, {3.863531934386898*^9, 
+   3.863531954996413*^9}},
+ Background->RGBColor[
+  0.87, 0.94, 1],ExpressionUUID->"68fdebd8-2fa8-4b31-9a5a-2a5525d07079"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Correlation", " ", "across", " ", "all", " ", "cell", " ", "lines"}], " ",
+    "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"both", "=", 
+     RowBox[{"Intersection", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Transpose", "[", "exprNum", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "icNum", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Number of cell lines with expression data: \>\"", ",", 
+     RowBox[{"Length", "[", "exprNum", "]"}]}], "]"}], "\[IndentingNewLine]", 
+   
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Number of cell lines with sensitivity data: \>\"", ",", 
+     RowBox[{"Length", "[", "icNum", "]"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Overlap: \>\"", ",", 
+     RowBox[{"Length", "[", "both", "]"}]}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pairData", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"id", "=", 
+        RowBox[{"both", "[", 
+         RowBox[{"[", "a", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"pair", "=", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Select", "[", 
+            RowBox[{"exprNum", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "id"}], "&"}]}], 
+            "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "2"}], "]"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"Select", "[", 
+            RowBox[{"icNum", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "id"}], "&"}]}], 
+            "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "}"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"pairData", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"pairData", ",", "pair"}], "]"}]}]}], "\[IndentingNewLine]", 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", "1", ",", 
+       RowBox[{"Length", "[", "both", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", "\"\<Data paired!\>\"", "]"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"allCorr", "=", 
+     RowBox[{"Correlation", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Transpose", "[", "pairData", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "pairData", "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Correlation Coefficient: \>\"", ",", "allCorr"}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"lm", "=", 
+     RowBox[{"LinearModelFit", "[", 
+      RowBox[{"pairData", ",", "x", ",", "x"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"allR", "=", 
+     RowBox[{"lm", "[", "\"\<AdjustedRSquared\>\"", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"pairData", ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "15"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.5", ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Expression (TPM)\>\"", ",", "\"\<Ox Sensitivity (AUC)\>\""}], 
+       "}"}]}]}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"corrPlot", "=", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ListPlot", "[", 
+       RowBox[{"pairData", ",", "\[IndentingNewLine]", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "15"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0.5", ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+        RowBox[{"FrameLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<Expression (TPM)\>\"", ",", "\"\<Ox Sensitivity (AUC)\>\""}], 
+          "}"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"lm", "[", "x", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "5", ",", "11"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Orange"}]}], "]"}]}], 
+     "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.850324951023118*^9, 3.850324992565269*^9}, {
+  3.850325062152541*^9, 3.850325065940167*^9}, {3.850325148929748*^9, 
+  3.850325171902062*^9}, {3.85032531787504*^9, 3.85032531873985*^9}, {
+  3.8503253740571117`*^9, 3.8503254647483807`*^9}, {3.8503260176816263`*^9, 
+  3.8503261139160423`*^9}, {3.8503261756037903`*^9, 3.8503262742493362`*^9}, {
+  3.850326399525523*^9, 3.850326484807865*^9}, {3.850326553723089*^9, 
+  3.8503265548156567`*^9}, {3.8581687789719477`*^9, 3.8581687963776007`*^9}, {
+  3.858168937565173*^9, 3.85816894165588*^9}, {3.85817622643937*^9, 
+  3.858176233777526*^9}, {3.858176348170187*^9, 3.858176371161306*^9}, {
+  3.85817642900176*^9, 3.858176456473258*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[2750]:=",ExpressionUUID->"fd4edd40-b3cd-4032-8702-04f63886897d"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"id1", "=", 
+   RowBox[{"StringJoin", "[", 
+    RowBox[{
+     RowBox[{"First", "[", 
+      RowBox[{"StringSplit", "[", 
+       RowBox[{
+        RowBox[{"FileBaseName", "[", "exprFile", "]"}], ",", "\"\<_\>\""}], 
+       "]"}], "]"}], ",", "\"\<_CorrPlot.pdf\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"id2", "=", 
+    RowBox[{"StringJoin", "[", 
+     RowBox[{
+      RowBox[{"First", "[", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{
+         RowBox[{"FileBaseName", "[", "exprFile", "]"}], ",", "\"\<_\>\""}], 
+        "]"}], "]"}], ",", "\"\<_CorrPlot.png\>\""}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"id1", ",", "corrPlot"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"id2", ",", "corrPlot"}], "]"}]}], "Input",
+ Background->RGBColor[
+  1, 0.85, 0.85],ExpressionUUID->"067bf294-458c-4878-9454-ea9908304b4f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Correlation", " ", "across", " ", "CRC"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"col1", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{"icData", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", "5", "]"}], "]"}], "\[Equal]", "\"\<Colorectal\>\""}], 
+        "&"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Number of selected lines: \>\"", ",", 
+     RowBox[{"Length", "[", "col1", "]"}]}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"col2", "=", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Transpose", "[", "col1", "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{"Transpose", "[", "col1", "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"both2", "=", 
+    RowBox[{"Intersection", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Transpose", "[", "exprNum", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"Transpose", "[", "col2", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pairData2", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"id", "=", 
+        RowBox[{"both2", "[", 
+         RowBox[{"[", "a", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"pair2", "=", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Select", "[", 
+            RowBox[{"exprNum", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "id"}], "&"}]}], 
+            "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "2"}], "]"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"Select", "[", 
+            RowBox[{"col2", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "id"}], "&"}]}], 
+            "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "}"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"pairData2", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"pairData2", ",", "pair2"}], "]"}]}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", "1", ",", 
+       RowBox[{"Length", "[", "both2", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", "\"\<Data paired!\>\"", "]"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"crcCorr", "=", 
+     RowBox[{"Correlation", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Transpose", "[", "pairData2", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "pairData2", "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Correlation Coefficient: \>\"", ",", "crcCorr"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"PearsonCorrelationTest", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Transpose", "[", "pairData2", "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"Transpose", "[", "pairData2", "]"}], "[", 
+      RowBox[{"[", "2", "]"}], "]"}], ",", "\"\<TestDataTable\>\""}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"lm", "=", 
+     RowBox[{"LinearModelFit", "[", 
+      RowBox[{"pairData2", ",", "x", ",", "x"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"bands", "[", "x_", "]"}], "=", 
+     RowBox[{"lm", "[", 
+      RowBox[{"\"\<MeanPredictionBands\>\"", ",", 
+       RowBox[{"ConfidenceLevel", "\[Rule]", ".9"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"crcR", "=", 
+     RowBox[{"lm", "[", "\"\<AdjustedRSquared\>\"", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"crcP", "=", 
+     RowBox[{"Last", "[", 
+      RowBox[{"lm", "[", "\"\<ParameterPValues\>\"", "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Fit R-Squared: \>\"", ",", "crcR"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Slope p-Value: \>\"", ",", "crcP"}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"pairData2", ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "15"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.5", ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Expression (TPM)\>\"", ",", "\"\<Ox Sensitivity (AUC)\>\""}], 
+       "}"}]}]}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xStart", "=", "3.5"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xEnd", "=", "9"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"corrPlotColorectal", "=", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ListPlot", "[", 
+       RowBox[{"pairData2", ",", "\[IndentingNewLine]", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "15"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0.5", ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Blue", ",", 
+           RowBox[{"PointSize", "[", "0.03", "]"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+        RowBox[{"FrameLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<Expression (TPM)\>\"", ",", "\"\<Ox Sensitivity (AUC)\>\""}], 
+          "}"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"lm", "[", "x", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "xStart", ",", "xEnd"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Orange"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"bands", "[", "x", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "xStart", ",", "xEnd"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "LightOrange"}], ",", 
+        RowBox[{"Filling", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"2", "\[Rule]", 
+           RowBox[{"{", "1", "}"}]}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ImageSize", "\[Rule]", "300"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"lm", "[", "\"\<ANOVATable\>\"", "]"}], "\[IndentingNewLine]", 
+   RowBox[{"lm", "[", "\"\<ParameterTable\>\"", "]"}]}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwd0VtIU3EAx/FZIkwlMCTJbZHLSlmJLF3LjfBUI1ve5ouZRGvlyEpTR2kj
+crYpZSVpM9h52KZEQxxuLBSMmhmK2Qjy0kVYGrObbTmI7GKe6fn9H358Hn8P
+3xTNxZKKdRwOZxc7KPWWe7+7QlR11Y9RqE1w+aBwInYenp5S/9rnDlFLMzPE
+/X9SH8hZ3RnMQ2hOLeuDUXucRCenzQPvZ/URA3n25/C94ymRv7I0Dg+Xzr6C
+/Q6JqYLV75O1wkZxoW7OG6IuJFXVQ6Vk8BpsK0wywszNl7rgTnFrLzySUPMC
+RteLXsLAt+IJGHd14zuoFx3zw0NB8QeodgcE86xclWELLPcczIGesWI5tPyU
+UrBF2078eoqngjFGBVE0e74S8j63n4P2RxtqoHK4txZ+2cFthFJhOjFFtmyC
+HesPNMNIctpNmPjPcAseNZbehV7uGSKdGzTDJ83CTnid0dAwP2Ihjjk7rLBh
++bENxq/+Tvs/wvbq5MmJ1VQuLGqgi+BWx2QZzBhfPA61KtdJyJw9oYZvRXod
+9LfE34P6uBErjJHttkPTbf7fFdaBhXwGvtZ0pzOsn2r7iXcUlRbIN1+m4fRH
+iRXqwwU2qBSEhyBT8OYZrMucW4Q5VybD8IbAkBjB38DQJkhva8qGeQvZe6FP
+bumBWcouos4mCG4fDVGKpjriGuR5noE=
+  "],
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[2763]:=",ExpressionUUID->"cb135d75-9606-4c40-b47c-358df87a6492"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Correlation", " ", "across", " ", "CNS"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"col1", "=", 
+     RowBox[{"Select", "[", 
+      RowBox[{"icData", ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", "5", "]"}], "]"}], "\[Equal]", 
+         "\"\<Central Nervous System\>\""}], "&"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Number of selected lines: \>\"", ",", 
+     RowBox[{"Length", "[", "col1", "]"}]}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"col2", "=", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Transpose", "[", "col1", "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{"Transpose", "[", "col1", "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], "}"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"both2", "=", 
+    RowBox[{"Intersection", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Transpose", "[", "exprNum", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"Transpose", "[", "col2", "]"}], "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"pairData2", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"id", "=", 
+        RowBox[{"both2", "[", 
+         RowBox[{"[", "a", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"pair2", "=", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Select", "[", 
+            RowBox[{"exprNum", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "id"}], "&"}]}], 
+            "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "2"}], "]"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"Select", "[", 
+            RowBox[{"col2", ",", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "id"}], "&"}]}], 
+            "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ",", "2"}], "]"}], "]"}]}], "}"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"pairData2", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"pairData2", ",", "pair2"}], "]"}]}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", "1", ",", 
+       RowBox[{"Length", "[", "both2", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", "\"\<Data paired!\>\"", "]"}], "\[IndentingNewLine]",
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cnsCorr", "=", 
+     RowBox[{"Correlation", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Transpose", "[", "pairData2", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "pairData2", "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Correlation Coefficient: \>\"", ",", "cnsCorr"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"PearsonCorrelationTest", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Transpose", "[", "pairData2", "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], ",", 
+     RowBox[{
+      RowBox[{"Transpose", "[", "pairData2", "]"}], "[", 
+      RowBox[{"[", "2", "]"}], "]"}], ",", "\"\<TestDataTable\>\""}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"lm", "=", 
+     RowBox[{"LinearModelFit", "[", 
+      RowBox[{"pairData2", ",", "x", ",", "x"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"bands", "[", "x_", "]"}], "=", 
+     RowBox[{"lm", "[", 
+      RowBox[{"\"\<MeanPredictionBands\>\"", ",", 
+       RowBox[{"ConfidenceLevel", "\[Rule]", ".9"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cnsR", "=", 
+     RowBox[{"lm", "[", "\"\<AdjustedRSquared\>\"", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cnsP", "=", 
+     RowBox[{"Last", "[", 
+      RowBox[{"lm", "[", "\"\<ParameterPValues\>\"", "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Fit R-Squared: \>\"", ",", "cnsR"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<Slope p-Value: \>\"", ",", "cnsP"}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"pairData2", ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "15"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.5", ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Expression (TPM)\>\"", ",", "\"\<Ox Sensitivity (AUC)\>\""}], 
+       "}"}]}]}], "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xStart", "=", "3.5"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xEnd", "=", "9"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"corrPlotNervous", "=", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ListPlot", "[", 
+       RowBox[{"pairData2", ",", "\[IndentingNewLine]", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "15"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0.5", ",", "1.1"}], "}"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Purple", ",", 
+           RowBox[{"PointSize", "[", "0.03", "]"}]}], "}"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+        RowBox[{"FrameLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<Expression (TPM)\>\"", ",", "\"\<Ox Sensitivity (AUC)\>\""}], 
+          "}"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"lm", "[", "x", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "xStart", ",", "xEnd"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "Orange"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"bands", "[", "x", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "xStart", ",", "xEnd"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", "LightOrange"}], ",", 
+        RowBox[{"Filling", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"2", "\[Rule]", 
+           RowBox[{"{", "1", "}"}]}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ImageSize", "\[Rule]", "300"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"lm", "[", "\"\<ANOVATable\>\"", "]"}], "\[IndentingNewLine]", 
+   RowBox[{"lm", "[", "\"\<ParameterTable\>\"", "]"}]}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwdzFsoQ3EAx/EhmkjMLVlEJnlgEdlcz8OYUjS8iCW5rGHul3iZh1HuJcSh
+JJeJjKKIpMwtijxQlMllhUPum8U4v//Dr8/Dr74BBRWyIlsOhxPIDnLoTMOD
+jqGeLZ5X0BAcbYT26SlEr+9m3iNrpGqXaDSG+8GxVdofDguO3kQLDMWnZ75g
+onSeK2Zd96h2hB9Rk3txrOeSN+KdTNhm2GCoT94+UV1/1gvtLIN9sL1WrYVN
+W5IZuFbAPYAaz7xDKEwQ+N+wWnw0xOMlUSx8qbsk9pruJVDmnSeFSqVYBiek
+wZlQoXMrhRH8pDIozEmthrH8DuJHfrkaqko6iSdDZg281qS1kp4ivhvWnRX2
+kH9quR+aL10HoMtIKA31k3KiMiRrDGqTp4mdDW7Mj56hgipVJhgWU2OFjDzw
+DxZnOIf8srZwX4m5F1U0/JHbjMLTmNlxGGRZIqaJb7dgg93KDhzvzjFB27ku
+Mzx51/laWQ+t0X5QcacXQQehixjy4p+0cNPpnbiYEXcr2Gaoxmx3Bv4DRa9C
++w==
+  "],
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[2786]:=",ExpressionUUID->"b91cc906-ddf3-444b-8402-0e6c91523a12"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"DirectoryName", "[", "exprFile", "]"}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{"StringJoin", "[", 
+     RowBox[{"\"\<PRISM_CorrTable_\>\"", ",", 
+      RowBox[{"First", "[", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{
+         RowBox[{"FileBaseName", "[", "exprFile", "]"}], ",", "\"\<_\>\""}], 
+        "]"}], "]"}], ",", "\"\<.csv\>\""}], "]"}], ",", 
+    RowBox[{"TableForm", "[", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<All Lines\>\"", ",", "\"\<R2 All\>\"", ",", "\"\<CRC\>\"", ",", 
+         "\"\<R2 CRC\>\"", ",", "\"\<pVal CRC\>\"", ",", "\"\<CNS\>\"", ",", 
+         "\"\<R2 CNS\>\"", ",", "\"\<pVal CNS\>\""}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+        "allCorr", ",", "allR", ",", "crcCorr", ",", "crcR", ",", "crcP", ",",
+          "cnsCorr", ",", "cnsR", ",", "cnsP"}], "}"}]}], 
+      "\[IndentingNewLine]", "}"}], "]"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"\"\<PRISM_CRC_CorrPlot_\>\"", ",", 
+     RowBox[{"First", "[", 
+      RowBox[{"StringSplit", "[", 
+       RowBox[{
+        RowBox[{"FileBaseName", "[", "exprFile", "]"}], ",", "\"\<_\>\""}], 
+       "]"}], "]"}], ",", "\"\<.pdf\>\""}], "]"}], ",", 
+   "corrPlotColorectal"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"\"\<PRISM_CNS_CorrPlot_\>\"", ",", 
+     RowBox[{"First", "[", 
+      RowBox[{"StringSplit", "[", 
+       RowBox[{
+        RowBox[{"FileBaseName", "[", "exprFile", "]"}], ",", "\"\<_\>\""}], 
+       "]"}], "]"}], ",", "\"\<.pdf\>\""}], "]"}], ",", "corrPlotNervous"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.8503282305577173`*^9, 3.850328254455439*^9}, {
+   3.85048996245653*^9, 3.850489980626939*^9}, {3.858169254008223*^9, 
+   3.858169259923521*^9}, 3.858169290997645*^9, 3.85816936548729*^9, {
+   3.8581761907833347`*^9, 3.8581762207547092`*^9}, {3.858176261980528*^9, 
+   3.8581762893676863`*^9}, {3.861375003283152*^9, 3.861375038543441*^9}},
+ Background->RGBColor[1, 0.85, 0.85],
+ CellLabel->
+  "In[1713]:=",ExpressionUUID->"ec853d1f-b378-4f4c-8536-affb84183026"]
+},
+WindowSize->{1083.75, 645.},
+WindowMargins->{{Automatic, 131.25}, {Automatic, 104.25}},
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"36e16300-4174-4a60-a114-5f4bb87c7901"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3798, 82, 252, "Input",ExpressionUUID->"68fdebd8-2fa8-4b31-9a5a-2a5525d07079"],
+Cell[4359, 104, 6000, 150, 706, "Input",ExpressionUUID->"fd4edd40-b3cd-4032-8702-04f63886897d"],
+Cell[10362, 256, 1128, 31, 170, "Input",ExpressionUUID->"067bf294-458c-4878-9454-ea9908304b4f"],
+Cell[11493, 289, 8500, 220, 1036, "Input",ExpressionUUID->"cb135d75-9606-4c40-b47c-358df87a6492"],
+Cell[19996, 511, 8366, 219, 1036, "Input",ExpressionUUID->"b91cc906-ddf3-444b-8402-0e6c91523a12"],
+Cell[28365, 732, 2413, 57, 211, "Input",ExpressionUUID->"ec853d1f-b378-4f4c-8536-affb84183026"]
+}
+]
+*)
+

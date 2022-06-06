@@ -1,0 +1,739 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     27991,        731]
+NotebookOptionsPosition[     26676,        707]
+NotebookOutlinePosition[     27081,        723]
+CellTagsIndexPosition[     27038,        720]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"tp1", "=", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+     "contrBCK", ",", "\[IndentingNewLine]", "cisBCK", ",", 
+      "\[IndentingNewLine]", "oxBCK", ",", "\[IndentingNewLine]", "actBCK", 
+      ",", "\[IndentingNewLine]", "contrNUC", ",", "\[IndentingNewLine]", 
+      "cisNUC", ",", "\[IndentingNewLine]", "oxNUC", ",", 
+      "\[IndentingNewLine]", "actNUC"}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"BoxWhiskerChart", "[", "tp1", "]"}]}], "Input",
+ CellChangeTimes->{{3.8588676006906967`*^9, 3.858867600772119*^9}, {
+  3.8588676836758127`*^9, 3.85886769494302*^9}, {3.858867851567428*^9, 
+  3.8588678768463373`*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[455]:=",ExpressionUUID->"36565a6e-45bc-4c08-867f-33882e316c56"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"tp2", "=", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+     "contrBCK", ",", "\[IndentingNewLine]", "cisBCK", ",", 
+      "\[IndentingNewLine]", "oxBCK", ",", "\[IndentingNewLine]", "actBCK", 
+      ",", "\[IndentingNewLine]", "contrNUC", ",", "\[IndentingNewLine]", 
+      "cisNUC", ",", "\[IndentingNewLine]", "oxNUC", ",", 
+      "\[IndentingNewLine]", "actNUC"}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"BoxWhiskerChart", "[", "tp2", "]"}]}], "Input",
+ CellChangeTimes->{{3.858867602255772*^9, 3.858867602551798*^9}, {
+   3.858867680322476*^9, 3.858867689376506*^9}, 3.858867907151423*^9},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[488]:=",ExpressionUUID->"7a32a265-0a99-4004-80d1-1736a4320353"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"tp3", "=", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+     "contrBCK", ",", "\[IndentingNewLine]", "cisBCK", ",", 
+      "\[IndentingNewLine]", "oxBCK", ",", "\[IndentingNewLine]", "actBCK", 
+      ",", "\[IndentingNewLine]", "contrNUC", ",", "\[IndentingNewLine]", 
+      "cisNUC", ",", "\[IndentingNewLine]", "oxNUC", ",", 
+      "\[IndentingNewLine]", "actNUC"}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"BoxWhiskerChart", "[", "tp3", "]"}]}], "Input",
+ CellChangeTimes->{{3.858867504024528*^9, 3.858867587681054*^9}, {
+   3.8588676414570293`*^9, 3.858867647443613*^9}, 3.858867909773452*^9},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[519]:=",ExpressionUUID->"1de0d92e-b95d-4256-b80d-5f9d180b0d2a"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"tp1n", "=", 
+   RowBox[{"tp1", "/", 
+    RowBox[{"Median", "[", 
+     RowBox[{"tp1", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BoxWhiskerChart", "[", "tp1n", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tp2n", "=", 
+   RowBox[{"tp2", "/", 
+    RowBox[{"Median", "[", 
+     RowBox[{"tp1", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BoxWhiskerChart", "[", "tp2n", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tp3n", "=", 
+   RowBox[{"tp3", "/", 
+    RowBox[{"Median", "[", 
+     RowBox[{"tp1", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"BoxWhiskerChart", "[", "tp3n", "]"}]}], "Input",
+ CellChangeTimes->{{3.858868788308811*^9, 3.858868802735181*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[526]:=",ExpressionUUID->"49e061d7-1523-4f25-9c8b-a94a93554936"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xStart", "=", "0.75"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"xEnd", "=", "2.25"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"yStart", "=", "0.75"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"yEnd", "=", "4"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"contrPlot", "=", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "Untreated", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "5", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "5", "]"}], "]"}], "]"}]}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "5", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "5", "]"}], "]"}], "]"}]}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "5", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "5", "]"}], "]"}], "]"}]}]}], "}"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Gray", ",", 
+        RowBox[{"PointSize", "[", "0.025", "]"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Nucleoplasmic 5-EU Signal\>\"", ",", 
+        "\"\<Nucleolar 5-EU Signal\>\""}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cisPlot", "=", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "Ox10", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "6", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "6", "]"}], "]"}], "]"}]}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "6", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "6", "]"}], "]"}], "]"}]}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "6", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "6", "]"}], "]"}], "]"}]}]}], "}"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Blue", ",", 
+        RowBox[{"PointSize", "[", "0.025", "]"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Nucleoplasmic 5-EU Signal\>\"", ",", 
+        "\"\<Nucleolar 5-EU Signal\>\""}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"oxPlot", "=", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "Ox10", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "7", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "7", "]"}], "]"}], "]"}]}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "7", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "7", "]"}], "]"}], "]"}]}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "7", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "7", "]"}], "]"}], "]"}]}]}], "}"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", 
+        RowBox[{"PointSize", "[", "0.025", "]"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Nucleoplasmic 5-EU Signal\>\"", ",", 
+        "\"\<Nucleolar 5-EU Signal\>\""}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"actPlot", "=", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "Ox10", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "4", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "4", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "8", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp1n", "[", 
+            RowBox[{"[", "8", "]"}], "]"}], "]"}]}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "4", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "4", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "8", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp2n", "[", 
+            RowBox[{"[", "8", "]"}], "]"}], "]"}]}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "4", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "4", "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{
+          RowBox[{"Median", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "8", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+          RowBox[{"MedianDeviation", "[", 
+           RowBox[{"tp3n", "[", 
+            RowBox[{"[", "8", "]"}], "]"}], "]"}]}]}], "}"}]}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Darker", "[", "Yellow", "]"}], ",", 
+        RowBox[{"PointSize", "[", "0.025", "]"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Nucleoplasmic 5-EU Signal\>\"", ",", 
+        "\"\<Nucleolar 5-EU Signal\>\""}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{"contrPlot", ",", "cisPlot", ",", "oxPlot", ",", "actPlot"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{"contrPlot", ",", "oxPlot"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.858868855030888*^9, 3.858868885094298*^9}, {
+  3.858869123941676*^9, 3.858869510733786*^9}, {3.858869564945798*^9, 
+  3.858869566559341*^9}, {3.8588696368679237`*^9, 3.858869933265522*^9}, {
+  3.858869983722846*^9, 3.8588699847024517`*^9}, {3.858870187242817*^9, 
+  3.8588701970095654`*^9}, {3.858870449907241*^9, 3.858870467470532*^9}, {
+  3.858870505927701*^9, 3.8588705175701923`*^9}, {3.858870817224226*^9, 
+  3.858870819838904*^9}},
+ Background->RGBColor[1, 1, 0.85],
+ CellLabel->
+  "In[788]:=",ExpressionUUID->"c0a57f84-dc02-4650-b8ab-f2d2176e99a0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Untreated", " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"lmContr", "=", 
+     RowBox[{"LinearModelFit", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Median", "[", 
+            RowBox[{"tp1n", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
+           RowBox[{"Median", "[", 
+            RowBox[{"tp1n", "[", 
+             RowBox[{"[", "5", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Median", "[", 
+            RowBox[{"tp2n", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
+           RowBox[{"Median", "[", 
+            RowBox[{"tp2n", "[", 
+             RowBox[{"[", "5", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Median", "[", 
+            RowBox[{"tp3n", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
+           RowBox[{"Median", "[", 
+            RowBox[{"tp3n", "[", 
+             RowBox[{"[", "5", "]"}], "]"}], "]"}]}], "}"}]}], "}"}], ",", 
+       "x", ",", "x"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"contrFitted", "=", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{"contrPlot", ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"lmContr", "[", "x", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "1", ",", "5"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Gray", ",", "Dashed"}], "}"}]}]}], "]"}]}], 
+     "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.858870078619481*^9, 3.858870113946809*^9}, {
+   3.858870147566386*^9, 3.858870223870385*^9}, {3.8588703152808533`*^9, 
+   3.858870319393016*^9}, {3.858870355930916*^9, 3.8588703615618057`*^9}, {
+   3.858870592452527*^9, 3.858870650572822*^9}, {3.858870777320888*^9, 
+   3.8588707783454647`*^9}, {3.858871627199795*^9, 3.858871628667593*^9}, 
+   3.858871759082293*^9},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[872]:=",ExpressionUUID->"c0b747d8-9014-464d-94a3-abb2f33e2295"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Cis10", " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"lmCis", "=", 
+     RowBox[{"LinearModelFit", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Median", "[", 
+            RowBox[{"tp1n", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", 
+           RowBox[{"Median", "[", 
+            RowBox[{"tp1n", "[", 
+             RowBox[{"[", "6", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Median", "[", 
+            RowBox[{"tp2n", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", 
+           RowBox[{"Median", "[", 
+            RowBox[{"tp2n", "[", 
+             RowBox[{"[", "6", "]"}], "]"}], "]"}]}], "}"}]}], 
+        "\[IndentingNewLine]", "}"}], ",", "x", ",", "x"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"cisFitted", "=", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{"cisPlot", ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"lmCis", "[", "x", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "0.75", ",", "1.55"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Blue", ",", "Dashed"}], "}"}]}]}], "]"}]}], 
+     "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.858870631475277*^9, 3.858870673961197*^9}, {
+  3.858870766100176*^9, 3.858870769937819*^9}, {3.858871648370644*^9, 
+  3.858871662012834*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[858]:=",ExpressionUUID->"0ce09c73-fe2a-4dac-8aa8-d4384e992cb2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "Oxaliplatin", " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"model", "=", 
+     RowBox[{"Y0", "+", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"Plateau", "-", "Y0"}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"-", "rate"}], "*", "x"}], "]"}]}], ")"}]}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"nlm", "=", 
+     RowBox[{"NonlinearModelFit", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Median", "[", 
+            RowBox[{"tp1n", "[", 
+             RowBox[{"[", "3", "]"}], "]"}], "]"}], ",", 
+           RowBox[{"Median", "[", 
+            RowBox[{"tp1n", "[", 
+             RowBox[{"[", "7", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Median", "[", 
+            RowBox[{"tp2n", "[", 
+             RowBox[{"[", "3", "]"}], "]"}], "]"}], ",", 
+           RowBox[{"Median", "[", 
+            RowBox[{"tp2n", "[", 
+             RowBox[{"[", "7", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Median", "[", 
+            RowBox[{"tp3n", "[", 
+             RowBox[{"[", "3", "]"}], "]"}], "]"}], ",", 
+           RowBox[{"Median", "[", 
+            RowBox[{"tp3n", "[", 
+             RowBox[{"[", "7", "]"}], "]"}], "]"}]}], "}"}]}], "}"}], 
+       "\[IndentingNewLine]", ",", "model", " ", ",", 
+       RowBox[{"{", 
+        RowBox[{"Y0", ",", "Plateau", ",", "rate"}], "}"}], ",", "x"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"oxFitted", "=", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{"oxPlot", ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"nlm", "[", "x", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "1.1", ",", "2.25"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"Red", ",", "Dashed"}], "}"}]}]}], "]"}]}], 
+     "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.858870327625073*^9, 3.85887038590417*^9}, {
+  3.858870561251326*^9, 3.85887058852913*^9}, {3.858870698851946*^9, 
+  3.8588707030554743`*^9}, {3.858871282427692*^9, 3.8588712835287037`*^9}, {
+  3.858871540327345*^9, 3.858871561525828*^9}, {3.8588716215851316`*^9, 
+  3.858871622409103*^9}, {3.858871746727421*^9, 3.8588717532534246`*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[869]:=",ExpressionUUID->"c15579b0-f545-4768-b974-31cee151db9d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", "ActD10", " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"lmAct", "=", 
+     RowBox[{"LinearModelFit", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Median", "[", 
+            RowBox[{"tp1n", "[", 
+             RowBox[{"[", "4", "]"}], "]"}], "]"}], ",", 
+           RowBox[{"Median", "[", 
+            RowBox[{"tp1n", "[", 
+             RowBox[{"[", "8", "]"}], "]"}], "]"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Median", "[", 
+            RowBox[{"tp2n", "[", 
+             RowBox[{"[", "4", "]"}], "]"}], "]"}], ",", 
+           RowBox[{"Median", "[", 
+            RowBox[{"tp2n", "[", 
+             RowBox[{"[", "8", "]"}], "]"}], "]"}]}], "}"}]}], "}"}], ",", 
+       "x", ",", "x"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"actFitted", "=", 
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{"actPlot", ",", "\[IndentingNewLine]", 
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"lmAct", "[", "x", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "0.75", ",", "1.56"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Darker", "[", "Yellow", "]"}], ",", "Dashed"}], "}"}]}]}],
+        "]"}]}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.8588707115979548`*^9, 3.858870757272649*^9}, {
+  3.85887161361407*^9, 3.858871614590971*^9}, {3.858871669334404*^9, 
+  3.858871683509315*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[862]:=",ExpressionUUID->"0ad081ef-b6f6-44c1-a438-c75a3e1d00f4"],
+
+Cell[BoxData[
+ RowBox[{"comboPlot", "=", 
+  RowBox[{"Show", "[", 
+   RowBox[{"contrFitted", ",", "cisPlot", ",", "oxFitted", ",", "actPlot"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.858870398182623*^9, 3.85887040875006*^9}, {
+  3.8588707857428837`*^9, 3.85887080017167*^9}, {3.8588709243330803`*^9, 
+  3.858870943501161*^9}, {3.858871690156267*^9, 3.8588716947806377`*^9}, {
+  3.85887173772724*^9, 3.8588717413107653`*^9}},
+ Background->RGBColor[1, 0.85, 0.85],
+ CellLabel->
+  "In[874]:=",ExpressionUUID->"3b9b4ead-852e-48e7-adb6-115d1a16fde1"],
+
+Cell[BoxData[{
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<5EU_Nuclear-vs-Nucleolar.pdf\>\"", ",", "comboPlot"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.858870944958728*^9, 3.858870972803114*^9}},
+ Background->RGBColor[1, 0.85, 0.85],
+ CellLabel->
+  "In[875]:=",ExpressionUUID->"921cd55e-656c-444a-9534-c02a6b2f7596"]
+},
+WindowSize->{1039.5, 631.5},
+WindowMargins->{{167.25, Automatic}, {Automatic, 88.5}},
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"0c803f59-7252-4114-ae70-fbc2a63be0fa"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 843, 18, 252, "Input",ExpressionUUID->"36565a6e-45bc-4c08-867f-33882e316c56"],
+Cell[1404, 40, 812, 17, 252, "Input",ExpressionUUID->"7a32a265-0a99-4004-80d1-1736a4320353"],
+Cell[2219, 59, 814, 17, 252, "Input",ExpressionUUID->"1de0d92e-b95d-4256-b80d-5f9d180b0d2a"],
+Cell[3036, 78, 1058, 29, 194, "Input",ExpressionUUID->"49e061d7-1523-4f25-9c8b-a94a93554936"],
+Cell[4097, 109, 12845, 338, 912, "Input",ExpressionUUID->"c0a57f84-dc02-4650-b8ab-f2d2176e99a0"],
+Cell[16945, 449, 2342, 59, 232, "Input",ExpressionUUID->"c0b747d8-9014-464d-94a3-abb2f33e2295"],
+Cell[19290, 510, 1796, 47, 232, "Input",ExpressionUUID->"0ce09c73-fe2a-4dac-8aa8-d4384e992cb2"],
+Cell[21089, 559, 2782, 72, 273, "Input",ExpressionUUID->"c15579b0-f545-4768-b974-31cee151db9d"],
+Cell[23874, 633, 1820, 48, 211, "Input",ExpressionUUID->"0ad081ef-b6f6-44c1-a438-c75a3e1d00f4"],
+Cell[25697, 683, 550, 11, 45, "Input",ExpressionUUID->"3b9b4ead-852e-48e7-adb6-115d1a16fde1"],
+Cell[26250, 696, 422, 9, 67, "Input",ExpressionUUID->"921cd55e-656c-444a-9534-c02a6b2f7596"]
+}
+]
+*)
+

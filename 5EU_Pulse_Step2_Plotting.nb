@@ -1,0 +1,493 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     18351,        485]
+NotebookOptionsPosition[     17516,        466]
+NotebookOutlinePosition[     17915,        482]
+CellTagsIndexPosition[     17872,        479]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "RandomFile", "=", "\"\</path/to/random/file/in/measurements/folder\>\""}],
+    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"DirectoryName", "[", "RandomFile", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"files", "=", 
+  RowBox[{"FileNames", "[", "\"\<*.csv\>\"", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.851516060161797*^9, 3.851516146654477*^9}, {
+  3.863531616466127*^9, 3.863531626189839*^9}},
+ Background->RGBColor[
+  0.87, 0.94, 1],ExpressionUUID->"aed63740-e17f-4198-b1a0-76305d5af3ea"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"IDs", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NormDataEU", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Eccen", "=", 
+    RowBox[{"{", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"lfd", "=", "a"}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"id", "=", 
+        RowBox[{"First", "[", 
+         RowBox[{"StringSplit", "[", 
+          RowBox[{
+           RowBox[{"files", "[", 
+            RowBox[{"[", "lfd", "]"}], "]"}], ",", "\"\<_\>\""}], "]"}], 
+         "]"}]}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"IDs", "=", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"IDs", ",", "id"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"rein", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"files", "[", 
+          RowBox[{"[", "lfd", "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"NormEU", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Transpose", "[", "rein", "]"}], "[", 
+          RowBox[{"[", "8", "]"}], "]"}], "/", 
+         RowBox[{
+          RowBox[{"Transpose", "[", "rein", "]"}], "[", 
+          RowBox[{"[", "5", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"NormDataEU", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"NormDataEU", ",", "NormEU"}], "]"}]}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Eccen", "=", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"Eccen", ",", 
+         RowBox[{
+          RowBox[{"Transpose", "[", "rein", "]"}], "[", 
+          RowBox[{"[", "4", "]"}], "]"}]}], "]"}]}], ",", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{"id", ",", "Bold", ",", "Blue"}], "]"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"Histogram", "[", 
+        RowBox[{"NormEU", ",", 
+         RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<Range: \>\"", ",", 
+        RowBox[{"Min", "[", "NormEU", "]"}], ",", "\"\< to \>\"", ",", 
+        RowBox[{"Max", "[", "NormEU", "]"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<Mean: \>\"", ",", 
+        RowBox[{"Mean", "[", "NormEU", "]"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<Median: \>\"", ",", 
+        RowBox[{"Median", "[", "NormEU", "]"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", "1", ",", 
+      RowBox[{"Length", "[", "files", "]"}]}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BoxWhiskerChart", "[", 
+   RowBox[{
+   "NormDataEU", ",", "\"\<Outliers\>\"", ",", "\[IndentingNewLine]", 
+    RowBox[{"ChartLabels", "\[Rule]", "IDs"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"PlotLabel", "\[Rule]", "\"\<5-EU Signal\>\""}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"BoxWhiskerChart", "[", 
+  RowBox[{"Eccen", ",", "\"\<Outliers\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"ChartLabels", "\[Rule]", "IDs"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Eccentricity\>\""}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.851516171004046*^9, 3.851516244875098*^9}, {
+  3.851516280584424*^9, 3.8515165145855007`*^9}, {3.851516595035783*^9, 
+  3.8515166376120768`*^9}, {3.85151669504205*^9, 3.851516695368182*^9}, {
+  3.85151694051502*^9, 3.851517002484247*^9}, {3.851517050304431*^9, 
+  3.851517079514504*^9}, {3.851517494032892*^9, 3.851517594232129*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[846]:=",ExpressionUUID->"97e73143-1448-41b1-946c-ca130fea9414"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ManOrder", "=", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"NormDataEU", "[", 
+        RowBox[{"[", "6", "]"}], "]"}], "/", 
+       RowBox[{"Median", "[", 
+        RowBox[{"NormDataEU", "[", 
+         RowBox[{"[", "6", "]"}], "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      
+      RowBox[{
+       RowBox[{"NormDataEU", "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "/", 
+       RowBox[{"Median", "[", 
+        RowBox[{"NormDataEU", "[", 
+         RowBox[{"[", "6", "]"}], "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      
+      RowBox[{
+       RowBox[{"NormDataEU", "[", 
+        RowBox[{"[", "5", "]"}], "]"}], "/", 
+       RowBox[{"Median", "[", 
+        RowBox[{"NormDataEU", "[", 
+         RowBox[{"[", "6", "]"}], "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      
+      RowBox[{
+       RowBox[{"NormDataEU", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "/", 
+       RowBox[{"Median", "[", 
+        RowBox[{"NormDataEU", "[", 
+         RowBox[{"[", "6", "]"}], "]"}], "]"}]}]}], "\[IndentingNewLine]", 
+     "}"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ManBox", "=", 
+   RowBox[{"BoxWhiskerChart", "[", 
+    RowBox[{"ManOrder", ",", "\"\<Outliers\>\"", ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0.5", ",", "4.5"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "3"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ChartLabels", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Untr.\>\"", ",", "\"\<10\[Mu]M Cis\>\"", ",", 
+        "\"\<10\[Mu]M Ox\>\"", ",", "\"\<1\[Mu]M ActD\>\""}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"ChartStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Gray", ",", "Magenta", ",", "Orange", ",", 
+        RowBox[{"Darker", "[", 
+         RowBox[{"Yellow", ",", "0.1"}], "]"}]}], "}"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", "\"\<Untreated vs. 10uM Cis\>\"", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LocationTest", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"ManOrder", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{"ManOrder", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", "Automatic", ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<TestDataTable\>\"", ",", "All"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", "\"\<Untreated vs. 10uM Ox\>\"", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LocationTest", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"ManOrder", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], ",", 
+      RowBox[{"ManOrder", "[", 
+       RowBox[{"[", "3", "]"}], "]"}]}], "}"}], ",", "Automatic", ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<TestDataTable\>\"", ",", "All"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", "\"\<Untreated vs. 1uM ActD\>\"", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"LocationTest", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"ManOrder", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], ",", 
+     RowBox[{"ManOrder", "[", 
+      RowBox[{"[", "4", "]"}], "]"}]}], "}"}], ",", "Automatic", ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<TestDataTable\>\"", ",", "All"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.851516560445031*^9, 3.8515165760242167`*^9}, {
+  3.851516645559656*^9, 3.8515167408017*^9}, {3.851516774017346*^9, 
+  3.851516919191216*^9}, {3.85151695585423*^9, 3.8515169628536587`*^9}, {
+  3.8515170903083763`*^9, 3.851517128095572*^9}, {3.851517159646308*^9, 
+  3.851517207824613*^9}, {3.8515184438375*^9, 3.85151847166952*^9}, {
+  3.858116611609647*^9, 3.858116625322112*^9}, {3.858116699757164*^9, 
+  3.858116754225177*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[956]:=",ExpressionUUID->"02e857a5-2f66-4de6-babb-ec1af11072fc"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ManPairs", "=", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Median", "[", 
+          RowBox[{"Eccen", "[", 
+           RowBox[{"[", "6", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+         RowBox[{"MedianDeviation", "[", 
+          RowBox[{"Eccen", "[", 
+           RowBox[{"[", "6", "]"}], "]"}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Median", "[", 
+          RowBox[{
+           RowBox[{"NormDataEU", "[", 
+            RowBox[{"[", "6", "]"}], "]"}], "/", 
+           RowBox[{"Median", "[", 
+            RowBox[{"NormDataEU", "[", 
+             RowBox[{"[", "6", "]"}], "]"}], "]"}]}], "]"}], "\[PlusMinus]", 
+         RowBox[{"MedianDeviation", "[", 
+          RowBox[{
+           RowBox[{"NormDataEU", "[", 
+            RowBox[{"[", "6", "]"}], "]"}], "/", 
+           RowBox[{"Median", "[", 
+            RowBox[{"NormDataEU", "[", 
+             RowBox[{"[", "6", "]"}], "]"}], "]"}]}], "]"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Median", "[", 
+          RowBox[{"Eccen", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+         RowBox[{"MedianDeviation", "[", 
+          RowBox[{"Eccen", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Median", "[", 
+          RowBox[{
+           RowBox[{"NormDataEU", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], "/", 
+           RowBox[{"Median", "[", 
+            RowBox[{"NormDataEU", "[", 
+             RowBox[{"[", "6", "]"}], "]"}], "]"}]}], "]"}], "\[PlusMinus]", 
+         RowBox[{"MedianDeviation", "[", 
+          RowBox[{
+           RowBox[{"NormDataEU", "[", 
+            RowBox[{"[", "3", "]"}], "]"}], "/", 
+           RowBox[{"Median", "[", 
+            RowBox[{"NormDataEU", "[", 
+             RowBox[{"[", "6", "]"}], "]"}], "]"}]}], "]"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Median", "[", 
+          RowBox[{"Eccen", "[", 
+           RowBox[{"[", "5", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+         RowBox[{"MedianDeviation", "[", 
+          RowBox[{"Eccen", "[", 
+           RowBox[{"[", "5", "]"}], "]"}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Median", "[", 
+          RowBox[{
+           RowBox[{"NormDataEU", "[", 
+            RowBox[{"[", "5", "]"}], "]"}], "/", 
+           RowBox[{"Median", "[", 
+            RowBox[{"NormDataEU", "[", 
+             RowBox[{"[", "6", "]"}], "]"}], "]"}]}], "]"}], "\[PlusMinus]", 
+         RowBox[{"MedianDeviation", "[", 
+          RowBox[{
+           RowBox[{"NormDataEU", "[", 
+            RowBox[{"[", "5", "]"}], "]"}], "/", 
+           RowBox[{"Median", "[", 
+            RowBox[{"NormDataEU", "[", 
+             RowBox[{"[", "6", "]"}], "]"}], "]"}]}], "]"}]}]}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Median", "[", 
+          RowBox[{"Eccen", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[PlusMinus]", 
+         RowBox[{"MedianDeviation", "[", 
+          RowBox[{"Eccen", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Median", "[", 
+          RowBox[{
+           RowBox[{"NormDataEU", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "/", 
+           RowBox[{"Median", "[", 
+            RowBox[{"NormDataEU", "[", 
+             RowBox[{"[", "6", "]"}], "]"}], "]"}]}], "]"}], "\[PlusMinus]", 
+         RowBox[{"MedianDeviation", "[", 
+          RowBox[{
+           RowBox[{"NormDataEU", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "/", 
+           RowBox[{"Median", "[", 
+            RowBox[{"NormDataEU", "[", 
+             RowBox[{"[", "6", "]"}], "]"}], "]"}]}], "]"}]}]}], "}"}]}], 
+     "}"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"ManList", "=", 
+  RowBox[{"ListPlot", "[", 
+   RowBox[{
+    RowBox[{"ManPairs", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Untr.\>\"", ",", "\"\<10\[Mu]M Cis\>\"", ",", 
+       "\"\<10\[Mu]M Ox\>\"", ",", "\"\<1\[Mu]M ActD\>\""}], "}"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0.2", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1.75"}], "}"}]}], "}"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+    RowBox[{"FrameLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Nucleolar Eccentricity\>\"", ",", "\"\<Norm. 5-EU Signal\>\""}], 
+      "}"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.85151723064312*^9, 3.8515174624935827`*^9}, {
+  3.851517836788192*^9, 3.85151794368139*^9}, {3.851517990309361*^9, 
+  3.8515180870615463`*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[878]:=",ExpressionUUID->"cf426587-0e64-47bd-afa5-b3115d63fcdd"],
+
+Cell[BoxData[{
+ RowBox[{"Print", "[", "\"\<Untreated vs. 10uM Cis (Eccentricity)\>\"", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LocationTest", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Eccen", "[", 
+       RowBox[{"[", "6", "]"}], "]"}], ",", 
+      RowBox[{"Eccen", "[", 
+       RowBox[{"[", "3", "]"}], "]"}]}], "}"}], ",", "Automatic", ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<TestDataTable\>\"", ",", "All"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", "\"\<Untreated vs. 10uM Ox (Eccentricity)\>\"", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LocationTest", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Eccen", "[", 
+       RowBox[{"[", "6", "]"}], "]"}], ",", 
+      RowBox[{"Eccen", "[", 
+       RowBox[{"[", "5", "]"}], "]"}]}], "}"}], ",", "Automatic", ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<TestDataTable\>\"", ",", "All"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", "\"\<Untreated vs. 10uM Ox (Eccentricity)\>\"", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"LocationTest", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Eccen", "[", 
+      RowBox[{"[", "6", "]"}], "]"}], ",", 
+     RowBox[{"Eccen", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", "Automatic", ",", 
+   RowBox[{"{", 
+    RowBox[{"\"\<TestDataTable\>\"", ",", "All"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.851517677142726*^9, 3.851517705955639*^9}, {
+  3.851517737273744*^9, 3.851517778945623*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[142]:=",ExpressionUUID->"ee6d20bb-2542-4c9b-b822-3beb73cd53ab"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Export", " ", "the", " ", "plots"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<5EU_BoxWhiskersChart.pdf\>\"", ",", "ManBox"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<5EU_BoxWhiskersChart.png\>\"", ",", 
+     RowBox[{"Rasterize", "[", 
+      RowBox[{"ManBox", ",", 
+       RowBox[{"ImageResolution", "\[Rule]", "1200"}]}], "]"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<Eccentricity-vs-5EU_ListPlot.pdf\>\"", ",", "ManList"}], 
+    "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<Eccentricity-vs-5EU_ListPlot.png\>\"", ",", 
+     RowBox[{"Rasterize", "[", 
+      RowBox[{"ManList", ",", 
+       RowBox[{"ImageResolution", "\[Rule]", "1200"}]}], "]"}]}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.851518096952141*^9, 3.851518193465102*^9}, {
+  3.851518229471437*^9, 3.851518229592452*^9}},
+ Background->RGBColor[1, 0.85, 0.85],
+ CellLabel->
+  "In[964]:=",ExpressionUUID->"9ccd1fc6-3a55-4f93-8803-0f92e0ea29f5"]
+},
+WindowSize->{1062., 565.5},
+WindowMargins->{{129, Automatic}, {Automatic, 99}},
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"5cd63e01-f44e-47ed-a798-7e9e7a5c3d7c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 623, 15, 108, "Input",ExpressionUUID->"aed63740-e17f-4198-b1a0-76305d5af3ea"],
+Cell[1184, 37, 4137, 101, 670, "Input",ExpressionUUID->"97e73143-1448-41b1-946c-ca130fea9414"],
+Cell[5324, 140, 4094, 107, 447, "Input",ExpressionUUID->"02e857a5-2f66-4de6-babb-ec1af11072fc"],
+Cell[9421, 249, 5204, 138, 311, "Input",ExpressionUUID->"cf426587-0e64-47bd-afa5-b3115d63fcdd"],
+Cell[14628, 389, 1702, 45, 190, "Input",ExpressionUUID->"ee6d20bb-2542-4c9b-b822-3beb73cd53ab"],
+Cell[16333, 436, 1179, 28, 170, "Input",ExpressionUUID->"9ccd1fc6-3a55-4f93-8803-0f92e0ea29f5"]
+}
+]
+*)
+

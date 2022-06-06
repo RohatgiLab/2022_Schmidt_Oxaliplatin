@@ -1,0 +1,1276 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     48598,       1268]
+NotebookOptionsPosition[     47655,       1248]
+NotebookOutlinePosition[     48054,       1264]
+CellTagsIndexPosition[     48011,       1261]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "rndmFile", "=", 
+    "\"\</path/to/random/step1/output/file/in/folder/to/be/analzed\>\""}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SetDirectory", "[", 
+    RowBox[{"DirectoryName", "[", "rndmFile", "]"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"files", "=", 
+    RowBox[{"FileNames", "[", "\"\<*.csv\>\"", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fblFiles", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"files", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"StringSplit", "[", 
+         RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "\"\<FBL\>\""}], "&"}]}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{
+    RowBox[{"Length", "[", "fblFiles", "]"}], ",", 
+    "\"\< FBL measurements found!\>\""}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"npmFiles", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"files", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"StringSplit", "[", 
+         RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "\"\<NPM1\>\""}], "&"}]}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{
+    RowBox[{"Length", "[", "npmFiles", "]"}], ",", 
+    "\"\< NPM1 measurements found!\>\""}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"surfFiles", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"files", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"StringSplit", "[", 
+         RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "\"\<SURF6\>\""}], 
+      "&"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{
+   RowBox[{"Length", "[", "surfFiles", "]"}], ",", 
+   "\"\< SURF6 measurements found!\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.85757984053266*^9, 3.857579844520771*^9}, 
+   3.863530558146988*^9},
+ Background->RGBColor[
+  0.87, 0.94, 1],ExpressionUUID->"1b4564f2-1cc4-4674-931e-f48f39fefb8a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Import", " ", "data"}], " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fblData", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"rein", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"fblFiles", "[", 
+          RowBox[{"[", "f", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"dG", "=", 
+        RowBox[{"Drop", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Transpose", "[", "rein", "]"}], "[", 
+           RowBox[{"[", "4", "]"}], "]"}], ",", "1"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"dGm", "=", 
+        RowBox[{
+         RowBox[{"Median", "[", "dG", "]"}], "\[PlusMinus]", 
+         RowBox[{"MedianDeviation", "[", "dG", "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"fblData", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"fblData", ",", "dGm"}], "]"}]}]}], "\[IndentingNewLine]", 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"f", ",", "1", ",", 
+       RowBox[{"Length", "[", "fblFiles", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"npmData", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"rein", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"npmFiles", "[", 
+          RowBox[{"[", "n", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"dG", "=", 
+        RowBox[{"Drop", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Transpose", "[", "rein", "]"}], "[", 
+           RowBox[{"[", "4", "]"}], "]"}], ",", "1"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"dGm", "=", 
+        RowBox[{
+         RowBox[{"Median", "[", "dG", "]"}], "\[PlusMinus]", 
+         RowBox[{"MedianDeviation", "[", "dG", "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"npmData", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"npmData", ",", "dGm"}], "]"}]}]}], "\[IndentingNewLine]", 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", 
+       RowBox[{"Length", "[", "npmFiles", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"surfData", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"rein", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"surfFiles", "[", 
+          RowBox[{"[", "s", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"dG", "=", 
+        RowBox[{"Drop", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Transpose", "[", "rein", "]"}], "[", 
+           RowBox[{"[", "4", "]"}], "]"}], ",", "1"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"dGm", "=", 
+        RowBox[{
+         RowBox[{"Median", "[", "dG", "]"}], "\[PlusMinus]", 
+         RowBox[{"MedianDeviation", "[", "dG", "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"surfData", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"surfData", ",", "dGm"}], "]"}]}]}], "\[IndentingNewLine]", 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"s", ",", "1", ",", 
+       RowBox[{"Length", "[", "surfFiles", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", "\"\<All data imported!\>\"", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.8575780592131443`*^9, 3.857578140899576*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[924]:=",ExpressionUUID->"12f77cbf-7951-4979-b8d3-f168d7f8d756"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"FBL", " ", "vs", " ", "NPM1"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"xStart", "=", 
+     RowBox[{"-", "1.75"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xEnd", "=", 
+     RowBox[{"-", "0.65"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"yStart", "=", 
+     RowBox[{"-", "1.35"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"yEnd", "=", 
+     RowBox[{"-", "0.4"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Cisplatin", " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cisPairData", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "7", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "7", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "12", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "12", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "9", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "9", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "10", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "10", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "11", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "11", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "8", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "8", "]"}], "]"}]}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"cisPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"cisPairData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", "Blue"}], "}"}]}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) NPM1 \
+(kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) FBL \
+(kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Oxaliplatin", " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"oxPairData", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "13", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "13", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "18", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "18", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "15", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "15", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "16", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "16", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "17", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "17", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "14", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "14", "]"}], "]"}]}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"oxPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"oxPairData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", "Red"}], "}"}]}], ",",
+       "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) NPM1 \
+(kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) FBL \
+(kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Actinomycin", " ", "D"}], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"actPairData", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "6", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "6", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "4", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "4", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "5", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "5", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], ",", 
+         RowBox[{"fblData", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"actPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"actPairData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", 
+         RowBox[{"Darker", "[", "Yellow", "]"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) NPM1 \
+(kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) FBL \
+(kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Show", "[", 
+    RowBox[{"cisPlot", ",", "oxPlot", ",", "actPlot"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.85757803821113*^9, 3.857578041511273*^9}, {
+  3.857578169641919*^9, 3.857578550488295*^9}, {3.857578582175102*^9, 
+  3.85757881432693*^9}, {3.8575788508129*^9, 3.857578929946706*^9}, {
+  3.857578982170618*^9, 3.857579021248185*^9}, {3.8575790668819637`*^9, 
+  3.8575790814502087`*^9}, {3.857579123346711*^9, 3.8575791987555637`*^9}, {
+  3.857579340929861*^9, 3.857579562952056*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[1087]:=",ExpressionUUID->"a5db24d3-b27d-4b62-8ab6-e327a1bf3ce3"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "FBL", " ", "vs", " ", "NPM1", " ", "ddG"}], " ", 
+   "**)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"xStart", "=", "0.35"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xEnd", "=", 
+     RowBox[{"-", "0.8"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"yStart", "=", 
+     RowBox[{"-", "0.4"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"yEnd", "=", "0.75"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Cisplatin", " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cisNormData", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"n1", "=", 
+        RowBox[{"cisPairData", "[", 
+         RowBox[{"[", "n", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xMed", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xNorm", "=", 
+        RowBox[{"xMed", "-", 
+         RowBox[{"cisPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"xDev", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yMed", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yNorm", "=", 
+        RowBox[{"yMed", "-", 
+         RowBox[{"cisPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "2", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"yDev", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"cisNormData", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"cisNormData", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"xNorm", "\[PlusMinus]", "xDev"}], ",", 
+            RowBox[{"yNorm", "\[PlusMinus]", "yDev"}]}], "}"}]}], "]"}]}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", 
+       RowBox[{"Length", "[", "cisPairData", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"cisNormPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"cisNormData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", "Blue"}], "}"}]}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) NPM1 (kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) FBL (kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Oxaliplatin", " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"oxNormData", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"n1", "=", 
+        RowBox[{"oxPairData", "[", 
+         RowBox[{"[", "n", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xMed", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xNorm", "=", 
+        RowBox[{"xMed", "-", 
+         RowBox[{"oxPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"xDev", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yMed", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yNorm", "=", 
+        RowBox[{"yMed", "-", 
+         RowBox[{"oxPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "2", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"yDev", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"oxNormData", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"oxNormData", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"xNorm", "\[PlusMinus]", "xDev"}], ",", 
+            RowBox[{"yNorm", "\[PlusMinus]", "yDev"}]}], "}"}]}], "]"}]}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", 
+       RowBox[{"Length", "[", "oxPairData", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"oxNormPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"oxNormData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", "Red"}], "}"}]}], ",",
+       "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) NPM1 (kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) FBL (kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Actinomycin", " ", "D"}], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"actNormData", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"n1", "=", 
+        RowBox[{"actPairData", "[", 
+         RowBox[{"[", "n", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xMed", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xNorm", "=", 
+        RowBox[{"xMed", "-", 
+         RowBox[{"actPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"xDev", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yMed", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yNorm", "=", 
+        RowBox[{"yMed", "-", 
+         RowBox[{"actPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "2", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"yDev", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"actNormData", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"actNormData", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"xNorm", "\[PlusMinus]", "xDev"}], ",", 
+            RowBox[{"yNorm", "\[PlusMinus]", "yDev"}]}], "}"}]}], "]"}]}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", 
+       RowBox[{"Length", "[", "actPairData", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"actNormPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"actNormData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", 
+         RowBox[{"Darker", "[", "Yellow", "]"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) NPM1 (kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) FBL (kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Show", "[", 
+    RowBox[{"cisNormPlot", ",", "oxNormPlot", ",", "actNormPlot"}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.857757462541972*^9, 3.857757465916848*^9}, {
+   3.857758308552886*^9, 3.8577590692397413`*^9}, {3.857759103983289*^9, 
+   3.8577591543324614`*^9}, {3.85776005358256*^9, 3.8577600695169687`*^9}, 
+   3.857760101696014*^9, 3.8577602299673986`*^9},
+ Background->RGBColor[1, 0.925, 0.925],
+ CellLabel->
+  "In[1098]:=",ExpressionUUID->"97ea4d64-1bb7-471f-b324-90dc9bdd4228"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"SURF6", " ", "vs", " ", "NPM1"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"xStart", "=", 
+     RowBox[{"-", "1.75"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xEnd", "=", 
+     RowBox[{"-", "0.65"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"yStart", "=", 
+     RowBox[{"-", "1"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"yEnd", "=", 
+     RowBox[{"-", "0.1"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Cisplatin", " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cisPairData", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "7", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "7", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "12", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "12", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "9", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "9", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "10", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "10", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "11", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "11", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "8", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "8", "]"}], "]"}]}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"cisPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"cisPairData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", "Blue"}], "}"}]}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) NPM1 \
+(kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) SURF \
+(kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Oxaliplatin", " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"oxPairData", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "13", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "13", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "18", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "18", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "15", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "15", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "16", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "16", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "17", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "17", "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "14", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "14", "]"}], "]"}]}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"oxPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"oxPairData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", "Red"}], "}"}]}], ",",
+       "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) NPM1 \
+(kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) SURF6 \
+(kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Actinomycin", " ", "D"}], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"actPairData", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "6", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "6", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "3", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "4", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "4", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "5", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "5", "]"}], "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"npmData", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], ",", 
+         RowBox[{"surfData", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"actPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"actPairData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", 
+         RowBox[{"Darker", "[", "Yellow", "]"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) NPM1 \
+(kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]G\), \(tr\)]\) SURF6 \
+(kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Show", "[", 
+    RowBox[{"cisPlot", ",", "oxPlot", ",", "actPlot"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.857579618776548*^9, 3.857579747046713*^9}, {
+  3.8575799279192133`*^9, 3.857579928546268*^9}, {3.8577601521771803`*^9, 
+  3.85776016006787*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[1112]:=",ExpressionUUID->"6fb00633-4519-4065-addf-b8cab08c9f18"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"*", " ", "FBL", " ", "vs", " ", "NPM1", " ", "ddG"}], " ", 
+   "**)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"xStart", "=", "0.35"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xEnd", "=", 
+     RowBox[{"-", "0.8"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"yStart", "=", 
+     RowBox[{"-", "0.4"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"yEnd", "=", "0.75"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Cisplatin", " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cisNormData", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"n1", "=", 
+        RowBox[{"cisPairData", "[", 
+         RowBox[{"[", "n", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xMed", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xNorm", "=", 
+        RowBox[{"xMed", "-", 
+         RowBox[{"cisPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"xDev", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yMed", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yNorm", "=", 
+        RowBox[{"yMed", "-", 
+         RowBox[{"cisPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "2", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"yDev", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"cisNormData", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"cisNormData", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"xNorm", "\[PlusMinus]", "xDev"}], ",", 
+            RowBox[{"yNorm", "\[PlusMinus]", "yDev"}]}], "}"}]}], "]"}]}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", 
+       RowBox[{"Length", "[", "cisPairData", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"cisNormPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"cisNormData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", "Blue"}], "}"}]}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) NPM1 (kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) FBL (kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "Oxaliplatin", " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"oxNormData", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"n1", "=", 
+        RowBox[{"oxPairData", "[", 
+         RowBox[{"[", "n", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xMed", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xNorm", "=", 
+        RowBox[{"xMed", "-", 
+         RowBox[{"oxPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"xDev", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yMed", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yNorm", "=", 
+        RowBox[{"yMed", "-", 
+         RowBox[{"oxPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "2", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"yDev", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"oxNormData", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"oxNormData", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"xNorm", "\[PlusMinus]", "xDev"}], ",", 
+            RowBox[{"yNorm", "\[PlusMinus]", "yDev"}]}], "}"}]}], "]"}]}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", 
+       RowBox[{"Length", "[", "oxPairData", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"oxNormPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"oxNormData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", "Red"}], "}"}]}], ",",
+       "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) NPM1 (kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) FBL (kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Actinomycin", " ", "D"}], " ", "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"actNormData", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"n1", "=", 
+        RowBox[{"actPairData", "[", 
+         RowBox[{"[", "n", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xMed", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"xNorm", "=", 
+        RowBox[{"xMed", "-", 
+         RowBox[{"actPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "1", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"xDev", "=", 
+        RowBox[{"xErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yErr", "=", 
+        RowBox[{"n1", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yMed", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"yNorm", "=", 
+        RowBox[{"yMed", "-", 
+         RowBox[{"actPairData", "[", 
+          RowBox[{"[", 
+           RowBox[{"1", ",", "2", ",", "1"}], "]"}], "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"yDev", "=", 
+        RowBox[{"yErr", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"actNormData", "=", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"actNormData", ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"xNorm", "\[PlusMinus]", "xDev"}], ",", 
+            RowBox[{"yNorm", "\[PlusMinus]", "yDev"}]}], "}"}]}], "]"}]}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", 
+       RowBox[{"Length", "[", "actPairData", "]"}]}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"actNormPlot", "=", 
+    RowBox[{"ListPlot", "[", 
+     RowBox[{"actNormData", ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"xStart", ",", "xEnd"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"yStart", ",", "yEnd"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", 
+         RowBox[{"Darker", "[", "Yellow", "]"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+      RowBox[{"FrameLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) NPM1 (kcal/mol)\>\"", ",", 
+         "\"\<\!\(\*SuperscriptBox[\(\[CapitalDelta]\[CapitalDelta]G\), \
+\(tr\)]\) FBL (kcal/mol)\>\""}], "}"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Show", "[", 
+    RowBox[{"cisNormPlot", ",", "oxNormPlot", ",", "actNormPlot"}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.857757462541972*^9, 3.857757465916848*^9}, {
+   3.857758308552886*^9, 3.8577590692397413`*^9}, {3.857759103983289*^9, 
+   3.8577591543324614`*^9}, {3.8577601746038637`*^9, 3.857760174685358*^9}, 
+   3.857760216442688*^9},
+ Background->RGBColor[1, 0.925, 0.925],
+ CellLabel->
+  "In[1123]:=",ExpressionUUID->"9e281499-d1be-4851-ab65-01b7b988639c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Export", " ", "plots"}], " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"SetDirectory", "[", 
+    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<FBL_vs_NPM1_dGplot.pdf\>\"", ",", "dGfn"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<FBL_vs_NPM1_ddGplot.pdf\>\"", ",", "ddGfn"}], "]"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<SURF6_vs_NPM1_dGplot.pdf\>\"", ",", "dGsn"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<SURF6_vs_NPM1_ddGplot.pdf\>\"", ",", "ddGsn"}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.857759867512598*^9, 3.857759952045545*^9}, {
+  3.8577600085829782`*^9, 3.857760014744484*^9}, {3.863530579609625*^9, 
+  3.8635305878535633`*^9}},
+ Background->RGBColor[
+  1, 0.85, 0.85],ExpressionUUID->"005b9084-093a-4c67-bbf1-1e864752ade4"]
+},
+WindowSize->{1039.5, 631.5},
+WindowMargins->{{Automatic, 75}, {Automatic, 84}},
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"79197a5a-dcb9-46f7-a8fc-f8418b7b13a8"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2336, 69, 314, "Input",ExpressionUUID->"1b4564f2-1cc4-4674-931e-f48f39fefb8a"],
+Cell[2897, 91, 3896, 103, 582, "Input",ExpressionUUID->"12f77cbf-7951-4979-b8d3-f168d7f8d756"],
+Cell[6796, 196, 9250, 244, 1171, "Input",ExpressionUUID->"a5db24d3-b27d-4b62-8ab6-e327a1bf3ce3"],
+Cell[16049, 442, 10756, 266, 1605, "Input",ExpressionUUID->"97ea4d64-1bb7-471f-b324-90dc9bdd4228"],
+Cell[26808, 710, 9034, 241, 1171, "Input",ExpressionUUID->"6fb00633-4519-4065-addf-b8cab08c9f18"],
+Cell[35845, 953, 10733, 266, 1605, "Input",ExpressionUUID->"9e281499-d1be-4851-ab65-01b7b988639c"],
+Cell[46581, 1221, 1070, 25, 211, "Input",ExpressionUUID->"005b9084-093a-4c67-bbf1-1e864752ade4"]
+}
+]
+*)
+

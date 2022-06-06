@@ -1,0 +1,657 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     25163,        649]
+NotebookOptionsPosition[     24398,        630]
+NotebookOutlinePosition[     24822,        647]
+CellTagsIndexPosition[     24779,        644]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "RandomFile", "=", 
+    "\"\</path/to/random/file/in/folder/with/output/from/step1\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"parameter", "=", "3"}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SetDirectory", "[", 
+    RowBox[{"DirectoryName", "[", "RandomFile", "]"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"untreated", "=", 
+    RowBox[{"Drop", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Transpose", "[", 
+        RowBox[{"Import", "[", 
+         RowBox[{"First", "[", 
+          RowBox[{"FileNames", "[", "\"\<Untreated_Data.csv\>\"", "]"}], 
+          "]"}], "]"}], "]"}], "[", 
+       RowBox[{"[", "parameter", "]"}], "]"}], ",", "1"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"CisFiles", "=", 
+  RowBox[{"Select", "[", 
+   RowBox[{
+    RowBox[{"FileNames", "[", "\"\<*Data.csv\>\"", "]"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"First", "[", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "]"}], "\[Equal]", 
+      "\"\<Cis\>\""}], "&"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CisData", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"i1", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"CisFiles", "[", 
+        RowBox[{"[", "c", "]"}], "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i2", "=", 
+      RowBox[{
+       RowBox[{"Transpose", "[", "i1", "]"}], "[", 
+       RowBox[{"[", "parameter", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i3", "=", 
+      RowBox[{"Drop", "[", 
+       RowBox[{"i2", ",", "1"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"CisData", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"CisData", ",", "i3"}], "]"}]}]}], "\[IndentingNewLine]", 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "1", ",", 
+     RowBox[{"Length", "[", "CisFiles", "]"}]}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Cis10", "=", 
+   RowBox[{"{", 
+    RowBox[{"untreated", ",", 
+     RowBox[{"CisData", "[", 
+      RowBox[{"[", "5", "]"}], "]"}], ",", 
+     RowBox[{"CisData", "[", 
+      RowBox[{"[", "7", "]"}], "]"}], ",", 
+     RowBox[{"CisData", "[", 
+      RowBox[{"[", "6", "]"}], "]"}], ",", 
+     RowBox[{"CisData", "[", 
+      RowBox[{"[", "8", "]"}], "]"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Cis100", "=", 
+   RowBox[{"{", 
+    RowBox[{"untreated", ",", 
+     RowBox[{"CisData", "[", 
+      RowBox[{"[", "3", "]"}], "]"}], ",", 
+     RowBox[{"CisData", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], ",", 
+     RowBox[{"CisData", "[", 
+      RowBox[{"[", "2", "]"}], "]"}], ",", 
+     RowBox[{"CisData", "[", 
+      RowBox[{"[", "4", "]"}], "]"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"BoxWhiskerChart", "[", 
+  RowBox[{"Cis10", ",", "\"\<Outliers\>\"", ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<10uM Cis\>\""}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BoxWhiskerChart", "[", 
+   RowBox[{"Cis100", ",", "\"\<Outliers\>\"", ",", 
+    RowBox[{"PlotLabel", "\[Rule]", "\"\<100uM Cis\>\""}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"OxFiles", "=", 
+  RowBox[{"Select", "[", 
+   RowBox[{
+    RowBox[{"FileNames", "[", "\"\<*Data.csv\>\"", "]"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"First", "[", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "]"}], "\[Equal]", 
+      "\"\<Ox\>\""}], "&"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"OxData", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"i1", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"OxFiles", "[", 
+        RowBox[{"[", "c", "]"}], "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i2", "=", 
+      RowBox[{
+       RowBox[{"Transpose", "[", "i1", "]"}], "[", 
+       RowBox[{"[", "parameter", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i3", "=", 
+      RowBox[{"Drop", "[", 
+       RowBox[{"i2", ",", "1"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"OxData", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"OxData", ",", "i3"}], "]"}]}]}], "\[IndentingNewLine]", "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "1", ",", 
+     RowBox[{"Length", "[", "OxFiles", "]"}]}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ox10", "=", 
+   RowBox[{"{", 
+    RowBox[{"untreated", ",", 
+     RowBox[{"OxData", "[", 
+      RowBox[{"[", "7", "]"}], "]"}], ",", 
+     RowBox[{"OxData", "[", 
+      RowBox[{"[", "5", "]"}], "]"}], ",", 
+     RowBox[{"OxData", "[", 
+      RowBox[{"[", "6", "]"}], "]"}], ",", 
+     RowBox[{"OxData", "[", 
+      RowBox[{"[", "8", "]"}], "]"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ox100", "=", 
+   RowBox[{"{", 
+    RowBox[{"untreated", ",", 
+     RowBox[{"OxData", "[", 
+      RowBox[{"[", "3", "]"}], "]"}], ",", 
+     RowBox[{"OxData", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], ",", 
+     RowBox[{"OxData", "[", 
+      RowBox[{"[", "2", "]"}], "]"}], ",", 
+     RowBox[{"OxData", "[", 
+      RowBox[{"[", "4", "]"}], "]"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"BoxWhiskerChart", "[", 
+  RowBox[{"Ox10", ",", "\"\<Outliers\>\"", ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<10uM Ox\>\""}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BoxWhiskerChart", "[", 
+   RowBox[{"Ox100", ",", "\"\<Outliers\>\"", ",", 
+    RowBox[{"PlotLabel", "\[Rule]", "\"\<100uM Ox\>\""}]}], "]"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"ActFiles", "=", 
+  RowBox[{"Select", "[", 
+   RowBox[{
+    RowBox[{"FileNames", "[", "\"\<*Data.csv\>\"", "]"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"First", "[", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "]"}], "\[Equal]", 
+      "\"\<ActD\>\""}], "&"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ActData", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"i1", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"ActFiles", "[", 
+        RowBox[{"[", "c", "]"}], "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i2", "=", 
+      RowBox[{
+       RowBox[{"Transpose", "[", "i1", "]"}], "[", 
+       RowBox[{"[", "parameter", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i3", "=", 
+      RowBox[{"Drop", "[", 
+       RowBox[{"i2", ",", "1"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ActData", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"ActData", ",", "i3"}], "]"}]}]}], "\[IndentingNewLine]", 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"c", ",", "1", ",", 
+     RowBox[{"Length", "[", "ActFiles", "]"}]}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Act", "=", 
+   RowBox[{"{", 
+    RowBox[{"untreated", ",", 
+     RowBox[{"ActData", "[", 
+      RowBox[{"[", "3", "]"}], "]"}], ",", 
+     RowBox[{"ActData", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], ",", 
+     RowBox[{"ActData", "[", 
+      RowBox[{"[", "4", "]"}], "]"}], ",", 
+     RowBox[{"ActData", "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"BoxWhiskerChart", "[", 
+  RowBox[{"Act", ",", "\"\<Outliers\>\"", ",", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<1uM ActD\>\""}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8162260276829157`*^9, 3.816226033109501*^9}, {
+   3.816226063536991*^9, 3.816226518795577*^9}, {3.816226576265136*^9, 
+   3.816226608760355*^9}, {3.81622664537988*^9, 3.816226685361085*^9}, {
+   3.8162267156435003`*^9, 3.8162267353971777`*^9}, {3.816226765795823*^9, 
+   3.816226836156744*^9}, {3.816226912548532*^9, 3.816226949188177*^9}, {
+   3.816226993873258*^9, 3.8162269940299873`*^9}, {3.816227044448976*^9, 
+   3.8162270922564497`*^9}, {3.81622716643233*^9, 3.816227166932807*^9}, {
+   3.816227537567713*^9, 3.816227557916991*^9}, {3.816229802454237*^9, 
+   3.816229991681307*^9}, {3.81623055166905*^9, 3.8162305566876907`*^9}, {
+   3.816271083327289*^9, 3.816271126047146*^9}, {3.816271160823779*^9, 
+   3.816271162682436*^9}, {3.816378535614102*^9, 3.8163785365745697`*^9}, 
+   3.820690918525653*^9, {3.820690971107793*^9, 3.820690971201086*^9}, 
+   3.820691021047842*^9, {3.820691090531253*^9, 3.8206910951756067`*^9}, {
+   3.8206912913266706`*^9, 3.820691447426354*^9}, {3.820691545729417*^9, 
+   3.820691611659276*^9}, {3.8206916437868967`*^9, 3.8206916786870728`*^9}, {
+   3.820694490045285*^9, 3.820694491931295*^9}, {3.863531139649127*^9, 
+   3.863531154235194*^9}},
+ Background->RGBColor[
+  0.87, 0.94, 1],ExpressionUUID->"407168fb-f115-4537-8372-24f969975457"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<ErrorBarPlots`\>\"", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"time", "=", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0.5", ",", "1", ",", "2", ",", "4"}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Cis10List", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{"Cis10List", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"Cis10List", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"time", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", 
+            RowBox[{"Median", "[", 
+             RowBox[{"Cis10", "[", 
+              RowBox[{"[", "j", "]"}], "]"}], "]"}]}], "}"}], ",", 
+          RowBox[{"ErrorBar", "[", 
+           RowBox[{"MedianDeviation", "[", 
+            RowBox[{"Cis10", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}],
+      "\[IndentingNewLine]", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "1", ",", 
+      RowBox[{"Length", "[", "Cis10", "]"}]}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Cis100List", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{"Cis100List", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"Cis100List", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"time", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", 
+            RowBox[{"Median", "[", 
+             RowBox[{"Cis100", "[", 
+              RowBox[{"[", "j", "]"}], "]"}], "]"}]}], "}"}], ",", 
+          RowBox[{"ErrorBar", "[", 
+           RowBox[{"MedianDeviation", "[", 
+            RowBox[{"Cis100", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}],
+      "\[IndentingNewLine]", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "1", ",", 
+      RowBox[{"Length", "[", "Cis100", "]"}]}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ox10List", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{"Ox10List", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"Ox10List", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"time", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", 
+            RowBox[{"Median", "[", 
+             RowBox[{"Ox10", "[", 
+              RowBox[{"[", "j", "]"}], "]"}], "]"}]}], "}"}], ",", 
+          RowBox[{"ErrorBar", "[", 
+           RowBox[{"MedianDeviation", "[", 
+            RowBox[{"Ox10", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}],
+      "\[IndentingNewLine]", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "1", ",", 
+      RowBox[{"Length", "[", "Ox10", "]"}]}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ox100List", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{"Ox100List", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"Ox100List", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"time", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", 
+            RowBox[{"Median", "[", 
+             RowBox[{"Ox100", "[", 
+              RowBox[{"[", "j", "]"}], "]"}], "]"}]}], "}"}], ",", 
+          RowBox[{"ErrorBar", "[", 
+           RowBox[{"MedianDeviation", "[", 
+            RowBox[{"Ox100", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}],
+      "\[IndentingNewLine]", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "1", ",", 
+      RowBox[{"Length", "[", "Ox100", "]"}]}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ActList", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{"ActList", "=", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"ActList", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"time", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", 
+            RowBox[{"Median", "[", 
+             RowBox[{"Act", "[", 
+              RowBox[{"[", "j", "]"}], "]"}], "]"}]}], "}"}], ",", 
+          RowBox[{"ErrorBar", "[", 
+           RowBox[{"MedianDeviation", "[", 
+            RowBox[{"Act", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "]"}], "]"}]}], "}"}]}], "]"}]}],
+      "\[IndentingNewLine]", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", "1", ",", 
+      RowBox[{"Length", "[", "Act", "]"}]}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Cis10Plot", "=", 
+   RowBox[{"ErrorListPlot", "[", 
+    RowBox[{"Cis10List", ",", "\[IndentingNewLine]", 
+     RowBox[{"Joined", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.25"}], ",", "4.25"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.2", ",", "1"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotMarkers", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<\[FilledSquare]\>\"", ",", "Large"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(Time (h)\>\"", ",", "\"\<Eccentricity\>\""}], "}"}]}]}], 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Cis100Plot", "=", 
+   RowBox[{"ErrorListPlot", "[", 
+    RowBox[{"Cis100List", ",", "\[IndentingNewLine]", 
+     RowBox[{"Joined", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotStyle", "\[Rule]", "Blue"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.25"}], ",", "4.25"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.2", ",", "1"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotMarkers", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<\[FilledSquare]\>\"", ",", "Large"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(Time (h)\>\"", ",", "\"\<Eccentricity\>\""}], "}"}]}]}], 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ox10Plot", "=", 
+   RowBox[{"ErrorListPlot", "[", 
+    RowBox[{"Ox10List", ",", "\[IndentingNewLine]", 
+     RowBox[{"Joined", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.25"}], ",", "4.25"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.2", ",", "1"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotMarkers", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<\[FilledSmallCircle]\>\"", ",", "Large"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Time (h)\>\"", ",", "\"\<Eccentricity\>\""}], "}"}]}]}], 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ox100Plot", "=", 
+   RowBox[{"ErrorListPlot", "[", 
+    RowBox[{"Ox100List", ",", "\[IndentingNewLine]", 
+     RowBox[{"Joined", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotStyle", "\[Rule]", "Red"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.25"}], ",", "4.25"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.2", ",", "1"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotMarkers", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<\[FilledSmallCircle]\>\"", ",", "Large"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Time (h)\>\"", ",", "\"\<Eccentricity\>\""}], "}"}]}]}], 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ActPlot", "=", 
+   RowBox[{"ErrorListPlot", "[", 
+    RowBox[{"ActList", ",", "\[IndentingNewLine]", 
+     RowBox[{"Joined", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotStyle", "\[Rule]", "Orange"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "0.25"}], ",", "4.25"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0.2", ",", "1"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"PlotMarkers", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<\[FilledSmallCircle]\>\"", ",", "Large"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Frame", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"FrameLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Time (h)\>\"", ",", "\"\<Eccentricity\>\""}], "}"}]}]}], 
+    "]"}]}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"raus10", "=", 
+  RowBox[{"Show", "[", 
+   RowBox[{"Cis10Plot", ",", "Ox10Plot", ",", "ActPlot"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"raus100", "=", 
+  RowBox[{"Show", "[", 
+   RowBox[{"Cis100Plot", ",", "Ox100Plot", ",", "ActPlot"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<TimeCourse_Eccentricity.pdf\>\"", ",", "raus"}], "]"}], 
+   "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.816230035596767*^9, 3.8162303512597313`*^9}, {
+  3.816230565073698*^9, 3.816230700092595*^9}, {3.816230754427575*^9, 
+  3.816230796110523*^9}, {3.816270834774666*^9, 3.816270875918743*^9}, {
+  3.816270958381119*^9, 3.8162710332059183`*^9}, {3.816271178560363*^9, 
+  3.816271192615469*^9}, {3.816271265913308*^9, 3.816271307694727*^9}, {
+  3.81627133944956*^9, 3.8162713920766687`*^9}, {3.81627145307158*^9, 
+  3.816271462926404*^9}, {3.816271493098089*^9, 3.8162715787940598`*^9}, {
+  3.816271988519925*^9, 3.816272052570931*^9}, {3.816272262102498*^9, 
+  3.8162722642679443`*^9}, {3.816378542339664*^9, 3.81637854624612*^9}, {
+  3.820691688734273*^9, 3.820691936924725*^9}, {3.8206919887283697`*^9, 
+  3.820692008665762*^9}, {3.820692047884963*^9, 3.8206920578134813`*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[1915]:=",ExpressionUUID->"b114484f-c18e-4f1e-bc7f-1980ca9f8bb5"],
+
+Cell[BoxData[
+ RowBox[{"ComboPlot", "=", 
+  RowBox[{"ErrorListPlot", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "Cis10List", ",", "Cis100List", ",", "Ox10List", ",", "Ox100List", ",", 
+      "ActList"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Joined", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "0.25"}], ",", "4.25"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0.2", ",", "1"}], "}"}]}], "}"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"PlotStyle", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Thickness", "[", "0.0025", "]"}], ",", "Dashed"}], "}"}], 
+      "}"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"PlotMarkers", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"Automatic", ",", "Large"}], "}"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"PlotLegends", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<10uM Cis\>\"", ",", "\"\<100 uM Cis\>\"", ",", " ", 
+       "\"\<10uM Ox\>\"", ",", "\"\<100uM Ox\>\"", ",", "\"\<1uM ActD\>\""}], 
+      "}"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Frame", "\[Rule]", "True"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"FrameLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Time (h)\>\"", ",", "\"\<Eccentricity\>\""}], "}"}]}], ",",
+     "\[IndentingNewLine]", 
+    RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.820692206623043*^9, 3.820692227194689*^9}, {
+  3.820692321628563*^9, 3.820692328526744*^9}, {3.8206923597681503`*^9, 
+  3.8206923718695927`*^9}, {3.820692405357636*^9, 3.820692423355167*^9}, {
+  3.8206935931894197`*^9, 3.8206936260792913`*^9}, {3.8206937063531857`*^9, 
+  3.820693709511591*^9}, {3.820693748521635*^9, 3.820693791529248*^9}, {
+  3.82069382387604*^9, 3.8206940698833447`*^9}, {3.820694147189103*^9, 
+  3.8206941647747183`*^9}, {3.820694215487699*^9, 3.820694299081355*^9}, {
+  3.820694344206689*^9, 3.820694387942006*^9}, {3.820694514640132*^9, 
+  3.82069451928223*^9}},
+ Background->RGBColor[0.87, 0.94, 1],
+ CellLabel->
+  "In[1935]:=",ExpressionUUID->"d302da85-4f2f-4b39-889b-d8ff15140e5b"],
+
+Cell[BoxData[{
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<Eccentricity_TimeCourse.pdf\>\"", ",", "ComboPlot"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<Eccentricity_TimeCourse.png\>\"", ",", 
+   RowBox[{"Rasterize", "[", 
+    RowBox[{"ComboPlot", ",", 
+     RowBox[{"ImageResolution", "\[Rule]", "1200"}]}], "]"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.8206985855199823`*^9, 3.8206986289758997`*^9}},
+ Background->RGBColor[
+  1, 0.85, 0.85],ExpressionUUID->"62247aa1-fd84-4467-9281-d06ed7e0186b"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.820692902747011*^9, 
+  3.820692914721961*^9}},ExpressionUUID->"4a6211c7-51d9-4a0f-842c-\
+10d74d67e57d"]
+},
+WindowSize->{1386, 852},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c9e9a44b-d298-45b7-8add-8e057ad15b66"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 9142, 236, 1196, "Input",ExpressionUUID->"407168fb-f115-4537-8372-24f969975457"],
+Cell[9703, 258, 11640, 296, 1880, "Input",ExpressionUUID->"b114484f-c18e-4f1e-bc7f-1980ca9f8bb5"],
+Cell[21346, 556, 2251, 51, 260, "Input",ExpressionUUID->"d302da85-4f2f-4b39-889b-d8ff15140e5b"],
+Cell[23600, 609, 639, 14, 108, "Input",ExpressionUUID->"62247aa1-fd84-4467-9281-d06ed7e0186b"],
+Cell[24242, 625, 152, 3, 36, "Input",ExpressionUUID->"4a6211c7-51d9-4a0f-842c-10d74d67e57d"]
+}
+]
+*)
+

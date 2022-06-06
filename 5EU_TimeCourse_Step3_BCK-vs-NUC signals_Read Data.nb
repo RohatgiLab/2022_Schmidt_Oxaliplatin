@@ -1,0 +1,368 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12199,        360]
+NotebookOptionsPosition[     11850,        346]
+NotebookOutlinePosition[     12243,        362]
+CellTagsIndexPosition[     12200,        359]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "rndmFile", "=", 
+    "\"\</random/file/in/folder/with/measurements/from/step1\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"timepoint", "=", "\"\<4hrs\>\""}], 
+  RowBox[{"(*", 
+   RowBox[{
+   "Specify", " ", "timepoint", " ", "to", " ", "be", " ", "analyzed", " ", 
+    "here"}], "*)"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"DirectoryName", "[", "rndmFile", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"quantFiles", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"FileNames", "[", "\"\<*.csv\>\"", "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"StringSplit", "[", 
+          RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "timepoint"}], "&"}]}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"contrFiles", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"quantFiles", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"StringSplit", "[", 
+         RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", 
+       "\"\<UntreatedWithEU\>\""}], "&"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cisFiles", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"quantFiles", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"StringSplit", "[", 
+         RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<Cis10\>\""}], 
+      "&"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"oxFiles", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"quantFiles", ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"StringSplit", "[", 
+         RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<Ox10\>\""}], "&"}]}],
+     "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"actFiles", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{"quantFiles", ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"StringSplit", "[", 
+          RowBox[{"#", ",", "\"\<_\>\""}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "\"\<ActD10\>\""}], 
+       "&"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<Files located!\>\"", "]"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"contrData", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"in", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"contrFiles", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"bck", "=", 
+        RowBox[{"Drop", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Transpose", "[", "in", "]"}], "[", 
+           RowBox[{"[", "6", "]"}], "]"}], ",", "1"}], "]"}]}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"nuc", "=", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Transpose", "[", "in", "]"}], "[", 
+          RowBox[{"[", "7", "]"}], "]"}], ",", "1"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"contrData", "=", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"contrData", ",", 
+         RowBox[{"{", 
+          RowBox[{"bck", ",", "nuc"}], "}"}]}], "]"}]}]}], 
+     "\[IndentingNewLine]", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", 
+      RowBox[{"Length", "[", "contrFiles", "]"}]}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cisData", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"in", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"cisFiles", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"bck", "=", 
+        RowBox[{"Drop", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Transpose", "[", "in", "]"}], "[", 
+           RowBox[{"[", "6", "]"}], "]"}], ",", "1"}], "]"}]}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"nuc", "=", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Transpose", "[", "in", "]"}], "[", 
+          RowBox[{"[", "7", "]"}], "]"}], ",", "1"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"cisData", "=", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"cisData", ",", 
+         RowBox[{"{", 
+          RowBox[{"bck", ",", "nuc"}], "}"}]}], "]"}]}]}], 
+     "\[IndentingNewLine]", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", 
+      RowBox[{"Length", "[", "cisFiles", "]"}]}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"oxData", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"in", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"oxFiles", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"bck", "=", 
+        RowBox[{"Drop", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Transpose", "[", "in", "]"}], "[", 
+           RowBox[{"[", "6", "]"}], "]"}], ",", "1"}], "]"}]}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"nuc", "=", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Transpose", "[", "in", "]"}], "[", 
+          RowBox[{"[", "7", "]"}], "]"}], ",", "1"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"oxData", "=", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"oxData", ",", 
+         RowBox[{"{", 
+          RowBox[{"bck", ",", "nuc"}], "}"}]}], "]"}]}]}], 
+     "\[IndentingNewLine]", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", 
+      RowBox[{"Length", "[", "oxFiles", "]"}]}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"actData", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"in", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"actFiles", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"bck", "=", 
+        RowBox[{"Drop", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Transpose", "[", "in", "]"}], "[", 
+           RowBox[{"[", "6", "]"}], "]"}], ",", "1"}], "]"}]}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"nuc", "=", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Transpose", "[", "in", "]"}], "[", 
+          RowBox[{"[", "7", "]"}], "]"}], ",", "1"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"actData", "=", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"actData", ",", 
+         RowBox[{"{", 
+          RowBox[{"bck", ",", "nuc"}], "}"}]}], "]"}]}]}], 
+     "\[IndentingNewLine]", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", 
+      RowBox[{"Length", "[", "actFiles", "]"}]}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<Data imported!\>\"", "]"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"contrBCK", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "contrData", "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"contrNUC", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "contrData", "]"}], "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Mean", "[", "contrBCK", "]"}], "/", 
+     RowBox[{"Mean", "[", "contrBCK", "]"}]}], ",", 
+    RowBox[{
+     RowBox[{"Mean", "[", "contrNUC", "]"}], "/", 
+     RowBox[{"Mean", "[", "contrBCK", "]"}]}]}], "}"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cisBCK", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "cisData", "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cisNUC", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "cisData", "]"}], "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Mean", "[", "cisBCK", "]"}], "/", 
+     RowBox[{"Mean", "[", "cisBCK", "]"}]}], ",", 
+    RowBox[{
+     RowBox[{"Mean", "[", "cisNUC", "]"}], "/", 
+     RowBox[{"Mean", "[", "cisBCK", "]"}]}]}], "}"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"oxBCK", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "oxData", "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"oxNUC", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "oxData", "]"}], "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Mean", "[", "oxBCK", "]"}], "/", 
+     RowBox[{"Mean", "[", "oxBCK", "]"}]}], ",", 
+    RowBox[{
+     RowBox[{"Mean", "[", "oxNUC", "]"}], "/", 
+     RowBox[{"Mean", "[", "oxBCK", "]"}]}]}], "}"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"actBCK", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "actData", "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"actNUC", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "actData", "]"}], "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Mean", "[", "actBCK", "]"}], "/", 
+    RowBox[{"Mean", "[", "actBCK", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"Mean", "[", "actNUC", "]"}], "/", 
+    RowBox[{"Mean", "[", "actBCK", "]"}]}]}], "}"}]}], "Input",
+ CellChangeTimes->{{3.8588663102965393`*^9, 3.858866472949306*^9}, {
+  3.858867141511448*^9, 3.858867172577909*^9}, {3.8588672823303757`*^9, 
+  3.858867332415818*^9}, {3.858867661489715*^9, 3.858867669439547*^9}, {
+  3.858867726067819*^9, 3.858867726870481*^9}, {3.8588678886458397`*^9, 
+  3.858867889855063*^9}, {3.858867924060832*^9, 3.858867924241067*^9}, {
+  3.863533764793405*^9, 3.863533835488426*^9}},
+ Background->RGBColor[
+  0.87, 0.94, 1],ExpressionUUID->"f3b44d17-08ee-4b09-a774-287143496e0b"]
+},
+WindowSize->{1386, 852},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"12.2 for Linux x86 (64-bit) (December 12, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"a542e8ae-fceb-4fcc-966f-b6312b79184a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 11288, 324, 1368, "Input",ExpressionUUID->"f3b44d17-08ee-4b09-a774-287143496e0b"]
+}
+]
+*)
+
